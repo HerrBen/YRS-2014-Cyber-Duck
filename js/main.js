@@ -1,12 +1,14 @@
 //Main javascript with all the fancy stuffs
 
-var times;
+var sunsetTime;
+var sunriseTime;
 var latitude;
 var longitude;
 var clock = $('.clock').FlipClock({});
+var state; //Night, lower, low, day
 
-//event hooks
-//process location only when document is ready to be manipulated
+/*Event Hooks*/
+//Begin only when document is ready to be manipulated
 $(document).ready(function() {
 		get_location(); 
 });
@@ -46,38 +48,57 @@ $('.numberField').keypress(function(event) {
 });
 
 /*Functions*/
-//Check if geolocation is present, then jump to respective function
+//Check if geolocation is present, then start processing
 function get_location() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+	if (navigator.geolocation) {
+		navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
 	} 
 }
 
-//If geolocating is successful proceed to calculate sunset times and set the clock
+//If geolocating is successful proceed to calculate sunset and set the clock
 function successFunction(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
 	//codeLatLng(lat, lng);
-	setTimes(); //Get and set clock and sunset times
+	getSetTimes(); //Get and set clocks, sunset and sunrise times
 	document.getElementById("container").style.display = "block"; //Unhide HTML content
 
 }
 
-function setTimes(){
-    times = SunCalc.getTimes(new Date(), latitude, longitude).sunset; //calculate sunset time based on longitude and latitude
-	
-	$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (times.getHours() - 12) +":"+times.getMinutes() + "pm </p>");	//Set time text
-	if ((new Date().getTime()) > times.getTime()){ //If sunset has already happened calculate tomorrow's sunset and do other stuff
-		
-	//	times = SunCalc.getTimes(, latitude, longitude).sunset; //calculate TOMMORROW'S sunset time based on longitude and latitude
+//Get and set appropriate sunset times, set clocks, set image and state
+function getSetTimes(){
+	var currentTime = new Date();
+	var nextDay = new Date().setDate(currentTime.getDate() + 1);
+	var countdown;
+    sunsetTime = SunCalc.getTimes(currentTime, latitude, longitude).sunset;	//calculate sunset time based on longitude and latitude
+	sunriseTime = SunCalc.getTimes(currentTime, latitude, longitude).sunrise;	//calculate sunrise time based on longitude and latitude
+	console.log("Sunset: " + sunsetTime);
+	console.log("Sunrise: " + sunriseTime);
+	console.log("Current Day: " +currentTime);
+	console.log("Next Day:" +nextDay);
+	if (currentTime.getTime() > sunsetTime.getTime()){	//If sunset has already happened 
+			sunsetTime = SunCalc.getTimes(nextDay, latitude, longitude).sunset;	//calculate TOMMORROW'S sunset time based on longitude and latitude
+			state = "night";
+			//set moon
 		}
-	else { //Otherwise display sunset as required
-	
+	else if (currentTime.getHours() > (sunsetTime.getHours() - 1)){	//Assuming any time below 1 hour is lower
+			state ="lower"
+			//set lower
 	}
-	console.log("Sunset: " + times);
-	var currentTime = new Date().getTime();
-
-	//clock.setTime(timeTillSunset);
+	else if (currentTime.getHours() > (sunsetTime.getHours() - 4)){	//Assuming any time below 4 hour is low
+			state ="low"
+			//set lower
+	}
+	else if (currentTime.getTime() > sunriseTime.getTime()) { //any other time above sunrise is day
+			state = "day";
+			//set day
+	}
+	
+	countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000);
+	console.log("Sunset in : " + countdown + " seconds");
+	console.log("Sunset: " + sunsetTime);
+	clock.setTime(countdown);
+	$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm </p>");	//Set time text
 }
 
 
@@ -87,7 +108,7 @@ function errorFunction(){
 }
 
 function processNumber(){
-	console.log("Hello :" + times.sunset);
+	console.log("Hello :" + sunsetTime.sunset);
 }
 
 function changeToConfirmation(){
