@@ -23,11 +23,37 @@
         <script src="js/flipclock.min.js"></script>
         <script src="js/suncalc.js"></script>
         
+        <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png">  
+        <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">  
+        <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png"> <!-- This sets up icons on all devices (w8, iOS etc) -->
+        <meta name="apple-mobile-web-app-title" content="Before Dark">
+        <link rel="icon" type="image/png" href="/favicon-196x196.png" sizes="196x196">
+        <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+        <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+        <meta name="msapplication-TileColor" content="#2b5797">
+        <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+        <meta name="application-name" content="Before Dark">
+
 
     </head>
     <body>
         <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade function validateForm()
+{
+
+    var z = document.forms["phoneNumber"]["num"].value;
+    if(!z.match(/^\d+/))
+        {
+        alert("Please only enter numeric characters.(Allowed input:0-9)")
+        }
+}your browser</a> to improve your experience.</p>
         <![endif]-->
         <!-- Add your site or application content here -->
 		<div id="container">
@@ -51,8 +77,9 @@
                 <div class="numberForm">
                     <p class="sendAlertsLabel">Enter a number to receive SMS alerts before dark:</p>
                     <form action="">
-                        <input type="text" name="phoneNumber" placeholder="Phone Number" class="numberField"><br>
-                        <input type="submit" value="SUBMIT" class="submitBtn">
+
+                        <input type="text" name="phoneNumber" placeholder="Phone Number" class="numberField" onclick="return validateForm()"><br>
+                        <input type="submit" value="SUBMIT">
                     </form>
                 </div>
             </div>
