@@ -295,8 +295,8 @@ textarea {
 }
 
 .icon {
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
     margin: 0 auto;
     background-size: 100%;
 }
@@ -358,7 +358,7 @@ body {
     margin: 32px 0 0 0;
 }
 
-.enableLocation{
+.enableLocation {
 	font-family: 'Roboto Slab', serif;
     font-size: 50px;
     color:#D0D0D0;
@@ -369,49 +369,59 @@ body {
     font-size: 30px;
     height: 30px;
     vertical-align: center;
+
+    display: inline-block;
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: auto;
+    height: 100%;
+}
+
+.location img {
+    display: inline-block;
+    margin: 0 7px 10px;
+    vertical-align: middle;
+    height: 100%;
 }
 
 .submitBtn {
-    margin-top: 10px;
-    margin-right: 10px;
-
-    width: 172px;
-    height: 42px;
-
-    font-size: 25px;
-    line-height: 100%;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.4);
-    color: #fff;
+    -moz-box-shadow: 0px 4px 0px 0px #6f64ac;
+    -webkit-box-shadow: 0px 4px 0px 0px #6f64ac;
+    box-shadow: 0px 4px 0px 0px #6f64ac;
+    background-color:#8b80ca;
+    -webkit-border-top-left-radius:6px;
+    -moz-border-radius-topleft:6px;
+    border-top-left-radius:6px;
+    -webkit-border-top-right-radius:6px;
+    -moz-border-radius-topright:6px;
+    border-top-right-radius:6px;
+    -webkit-border-bottom-right-radius:6px;
+    -moz-border-radius-bottomright:6px;
+    border-bottom-right-radius:6px;
+    -webkit-border-bottom-left-radius:6px;
+    -moz-border-radius-bottomleft:6px;
+    border-bottom-left-radius:6px;
+    text-indent:0px;
     display:inline-block;
-    vertical-align: middle;
-    text-align: center;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background 0.1s ease-in-out;
-    -webkit-transition: background 0.1s ease-in-out;
-    -moz-transition: background 0.1s ease-in-out;
-    -ms-transition: background 0.1s ease-in-out;
-    -o-transition: background 0.1s ease-in-out;
-    text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-    color: #fff;
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-    font-family: 'Helvetica Neue', Helvetica, sans-serif;
-
-    background-color: #3fb8e8;
-    box-shadow: 0px 3px 0px 0px #3293ba;
-}
-.submitBtn:active {
-    padding-top: 15px;
-    margin-bottom: -1px;
-    background-color: #1baae3;
-}
-.submitBtn, .submitBtn:hover, .submitBtn:active {
-    outline: 0 none;
-    text-decoration: none;
-    color: #fff;
-    box-shadow: 0px 1px 0px 0px #3293ba;
+    color:#ffffff;
+    font-family:Arial;
+    font-size:20px;
+    font-weight:bold;
+    font-style:normal;
+    height:42px;
+    line-height:42px;
+    width:98px;
+    text-decoration:none;
+    text-align:center;
+    border-style: solid;
+    border-color: #8b80ca;
+}.submitBtn:hover {
+    border-color: #796dbc;
+    background-color: #796dbc;
+}.submitBtn:active {
+    box-shadow: 0px 4px 0px 0px #796dbc;
+}.submitBtn:focus {
+    outline: none;
 }
 
 .centerClock {
@@ -423,20 +433,12 @@ body {
 
 /*Desktop*/
 @media all and (min-width: 1024px) {
-    .icon {
-        width: 160px;
-        height: 160px;
-    }
 
     .centerClass {
         margin: 0 auto;
         max-width: 1080px;
         text-align: center;
         vertical-align: center;
-    }
-
-    .fieldSize {
-        width: 500px;
     }
 
     .sendAlertsLabel {
@@ -449,13 +451,14 @@ body {
 
     .numberField {
         height: 35px;
+        width: 500px;
         font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
-        font-size: 30px;
+        font-size: 20px;
         text-align: center;
         margin: 5px auto 10px auto;
         text-align: center;
         max-width: 1080px;
-        border-radius: 10px;
+        border: 3px solid #c9c6c6;
     }
 }
 
@@ -467,10 +470,6 @@ body {
         text-align: center;
     }   
 
-    .fieldSize {
-        width: 720px;
-    }
-
     .sendAlertsLabel {
         font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
         font-size: 20px;
@@ -481,26 +480,23 @@ body {
 
     .numberField {
         height: 35px;
+        width: 500px;
         font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
-        font-size: 30px;
+        font-size: 20px;
         text-align: center;
         margin: 5px auto 10px auto;
         text-align: center;
-        max-width: 720px;
-        border-radius: 10px;
+        max-width: 1080px;
+        border: 3px solid #c9c6c6;
     }
 }
 
 /*Mobile*/
-@media all (max-width: 719px) {
+@media (max-width: 719px) {
     .centerClass {
         margin: 0 auto;
-        max-width: 320px;
+        max-width: 719px;
         text-align: center;
-    }
-
-    .fieldSize {
-        width: 320px;
     }
 
     .sendAlertsLabel {
@@ -513,12 +509,31 @@ body {
 
     .numberField {
         height: 35px;
+        width: 350px;
         font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
-        font-size: 30px;
+        font-size: 20px;
         text-align: center;
-        margin: 5px auto 10px auto;
+        margin: 10px auto 40px auto;
         text-align: center;
-        max-width: 320px;
-        border-radius: 10px;
+        max-width: 1080px;
+        border: 3px solid #c9c6c6;
+    }
+
+    .sunsetLabel {
+        font-family: 'Roboto Slab', serif;
+        font-size: 27px;
+        color: white;
+        margin: 32px 0 0 0;
+    }
+
+    .locationLabel {
+        font-family: 'Roboto Slab', serif;
+        font-size: 27px;
+        height: 30px;
+        vertical-align: center;
+    }
+
+    .submitBtn {
+        width: 300px;
     }
 }
