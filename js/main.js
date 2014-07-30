@@ -66,7 +66,10 @@ function successFunction(position) {
 function setTimes(){
     times = SunCalc.getTimes(new Date(), latitude, longitude).sunset; //calculate sunset time based on longitude and latitude
 	$(".sunsetLabel").html("<p>The sun sets at " + (times.getHours() - 12) +":"+times.getMinutes() + "pm </p>");	//Set time text
-	clock.setTime(-600);
+	var timeTillSunset = new Date().getTime();
+	timeTillSunset = (timeTillSunset - times.getTime());
+	console.log(timeTillSunset);
+	clock.setTime(timeTillSunset);
 }
 
 
