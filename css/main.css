@@ -305,3 +305,65 @@ textarea {
         page-break-after: avoid;
     }
 }
+
+.icon {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto;
+    background-size: 100%;
+}
+
+.sunlight {
+    background-image: url('../img/sunlight.png');
+}
+
+.horizonLow {
+    background-image: url('../img/sun-horizon-low.png');
+}
+
+.horizonLower {
+    background-image: url('../img/sun-horizon-lower.png');
+}
+
+.moon {
+    background-image: url('../img/moon.png');
+}
+
+.flip-clock-label {
+    display: none;
+}
+
+.clock.flip-clock-wrapper {
+    width: 100%;
+    max-width: 345px;
+    margin: 0 auto;
+}
+.flip-clock-divider.seconds {
+    display: none;
+}
+.flip.play:nth-of-type(5) {
+    display: none;
+}
+.flip.play:nth-of-type(6) {
+    display: none;
+}
+
+/*Desktop*/
+@media all and (min-width: 1024px) {
+    .icon {
+        width: 160px;
+        height: 160px;
+    }
+}
+
+/*Tablet*/
+@media all and (min-width: 720px) and (max-width: 1023px) {
+
+}
+
+/*Mobile*/
+@media all (max-width: 719px) {
+
+
+
+}

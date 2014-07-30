@@ -17,6 +17,12 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
 		<link rel="stylesheet" href="css/flipclock.css">
 		<script src="js/main.js"></script>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/flipclock.min.js"></script>
+        <script src="js/suncalc.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -24,20 +30,38 @@
         <![endif]-->
         <!-- Add your site or application content here -->
 		<div id="container">
-        <p>Hello world! This is HTML5 Boilerplate.</p>
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-		<script src="js/plugins.js"></script>
-		<script src="js/flipclock.min.js"></script>
-		<script src="js/suncalc.js"></script>
 
+            <div class="icon moon">
 
-		
-			<div class="clock">
-			<script>
-			var clock = $('.clock').FlipClock({});
-			</script>
-			</div>
+            </div>
+
+            <div class="clock">
+                <script>
+                    var clock = $('.clock').FlipClock({
+                        showSeconds: false
+                    });
+                </script>
+            </div>
+
+            <div class="container">
+                <div class="sunsetTime">
+                    <p>The sunset time is 8:54 pm</p>
+                </div>
+
+                <div class="locationLabel">
+                    <img src="img/compass.png">
+                    <span style="color:#D0D0D0">London, United Kingdom</span>
+                </div>
+
+                <div class="numberForm">
+                    <p>SEND ALERTS TO YOUR CHILD:</p>
+                    <form action="">
+                        <input type="text" name="phoneNumber" placeholder="Phone Number"><br>
+                    </form>
+
+                    <input type="submit" value="SUBMIT">
+                </div>
+            </div>
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
