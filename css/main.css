@@ -344,13 +344,6 @@ body {
         background-size: cover;
 }
 
-.sunsetTime {
-    font-family: 'Roboto Slab', serif;
-    font-size: 32px;
-    color: white;
-    margin: 32px 0 0 0;
-}
-
 .sunsetLabel {
     font-family: 'Roboto Slab', serif;
     font-size: 32px;
