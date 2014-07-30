@@ -74,7 +74,7 @@ function setTimes(){
 
 
 function errorFunction(){
-    $("#container").html('"<div class="enableLocation centerClass">Oh no! It looks like you have location services disabled. Please enable it and try again.  </div>"'); //Displays message to user about geolocating
+    $("#container").html('"<div class="enableLocation centerClass">Oh no! It looks like you have location services disabled. Please enable them and try again.  </div>"'); //Displays message to user about geolocating
 	document.getElementById("container").style.display = "block"; //Display HTML content
 }
 
