@@ -3,6 +3,7 @@
 var times;
 var latitude;
 var longitude;
+var clock = $('.clock').FlipClock({});
 
 //event hooks
 //process location only when document is ready to be manipulated
@@ -47,22 +48,26 @@ function get_location() {
 	} 
 }
 
-//If geolocating is successful proceed to calculate sunset  times
+//If geolocating is successful proceed to calculate sunset times and set the clock
 function successFunction(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
 	//codeLatLng(lat, lng);
-    // Get sunset time
-    times = SunCalc.getTimes(new Date(), latitude, longitude);
-    //Log in the console
-    console.log("Sunset: "+times.sunset);
-	document.getElementById("container").style.display = "block"; //Display HTML content
+	setTimes(); //Get and set clock and sunset times
+	document.getElementById("container").style.display = "block"; //Unhide HTML content
 
+}
+
+function setTimes(){
+    times = SunCalc.getTimes(new Date(), latitude, longitude).sunset; //calculate sunset time based on longitude and latitude
+	$(".sunsetTime").html("<p>The sun sets at " + (times.getHours() - 12) +":"+times.getMinutes() + "pm </p>");	//Set time text
+	clock.setTime(3600);
 }
 
 
 function errorFunction(){
-    alert("Sorry, you can't use this website, please enable location services");
+    $("#container").html('"<div class="enableLocation centerClass">Oh no! It looks like you have location services disabled. Please enable it and try again.  </div>"'); //Displays message to user about geolocating
+	document.getElementById("container").style.display = "block"; //Display HTML content
 }
 
 function processNumber(){

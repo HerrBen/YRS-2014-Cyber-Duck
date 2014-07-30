@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if gt IE 8]>		<html class="no-js"> <![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -46,28 +46,23 @@
     </head>
     <body>
         <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade function validateForm()
-{
-
-    var z = document.forms["phoneNumber"]["num"].value;
-    if(!z.match(/^\d+/))
-        {
-        alert("Please only enter numeric characters.(Allowed input:0-9)")
-        }
-}your browser</a> to improve your experience.</p>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+		
         <!-- Add your site or application content here -->
 		<div id="container">
 
-            <div class="icon horizonLower center">
-
-            </div>
+            <div class="icon horizonLower center"></div>
 
             <div class="clock"></div>
 
             <div class="container">
                 <div class="sunsetTime centerClass">
+<<<<<<< HEAD
                     <p class="sunsetLabel centerClass">The sunset time is 8:54 pm</p>
+=======
+                    <p>The sun sets at 9:00pm</p>
+>>>>>>> 475d9c803c6c3515601248d7da9581d18fba8a19
                 </div>
 
                 <div class="location centerClass">
@@ -84,12 +79,6 @@
                     </form>
                 </div>
             </div>
-
-        <script>
-            var clock = $('.clock').FlipClock({
-                showSeconds: false
-            });
-        </script>
 
         <script src="js/main.js"></script>
         
