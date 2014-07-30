@@ -65,11 +65,19 @@ function successFunction(position) {
 
 function setTimes(){
     times = SunCalc.getTimes(new Date(), latitude, longitude).sunset; //calculate sunset time based on longitude and latitude
-	$(".sunsetLabel").html("<p>The sun sets at " + (times.getHours() - 12) +":"+times.getMinutes() + "pm </p>");	//Set time text
-	var timeTillSunset = new Date().getTime();
-	timeTillSunset = (timeTillSunset - times.getTime());
-	console.log(timeTillSunset);
-	clock.setTime(timeTillSunset);
+	
+	$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (times.getHours() - 12) +":"+times.getMinutes() + "pm </p>");	//Set time text
+	if ((new Date().getTime()) > times.getTime()){ //If sunset has already happened calculate tomorrow's sunset and do other stuff
+		
+	//	times = SunCalc.getTimes(, latitude, longitude).sunset; //calculate TOMMORROW'S sunset time based on longitude and latitude
+		}
+	else { //Otherwise display sunset as required
+	
+	}
+	console.log("Sunset: " + times);
+	var currentTime = new Date().getTime();
+
+	//clock.setTime(timeTillSunset);
 }
 
 
