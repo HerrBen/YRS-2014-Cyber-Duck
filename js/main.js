@@ -36,21 +36,25 @@ function processNumber(){
 	console.log("Hello :" + times.sunset);
 };
 
-$("#btn").click(function(event){
+$(".submitBtn").click(function(event){
   event.preventDefault(); 
   $.ajax({
     url : "api/SMS.php",
     type: "POST",
-    data : {number:"07708248867",message:"hello"},
+    data : {number:$(".numberField").val() ,message:"hello"},
     success: function(data)
     {
         $("#result").text("Your sms will be send!");
-		alert("Text sent");
+		console.log("Text Sent to " + $(".numberField").val());
+		console.log("Return: " + data);
+		$(".numberForm").fadeOut(3000);
+		$(".numberForm").html("Done");
+		
     },
     error: function (data)
     {
               $("#result").text("Sorry, something wrong happened...");
-			  alert("error?");
+			  console.log("text was not sent");
     }
   });
 });  

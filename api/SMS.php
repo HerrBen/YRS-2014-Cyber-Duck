@@ -13,13 +13,15 @@ function sendSMS($Number,$Message){
 	'From' => "+441672500046", 
 	'Body' => "$Message",   
 ));
-		echo "Sending the message $Message to $Number";
+		echo "Sending the message $Message to $Number was successful";
 		return "Text sent successfully";
 	}
 	catch (Exception $error){
-		echo 'Error: ', $error->getMessage(), "\n";
+		echo 'Error: ', $error->getMessage(), "\n"; 
+	
 		return "Error : $error->getMessage()";
 	}
+	
 }
 
 //Creates a cron job for sending text at certain time
@@ -29,6 +31,5 @@ function subscribeNumber($number, $message, $atTime){
 	echo "at $atTime /usr/local/bin/php /www/api/TwilioSMS.php?sendSMS($number, $message)";
 }
 
-sendSMS("+447708248867","hello");
 
 ?>
