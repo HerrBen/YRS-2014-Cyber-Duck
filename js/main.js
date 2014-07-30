@@ -4,10 +4,10 @@ var times;
 var latitude;
 var longitude;
 
-//Request location before doing anything
-window.onload = function(){
-	get_location();
-};
+$(document).ready(function() {
+		get_location();
+});
+
 
 function get_location() {
   if (navigator.geolocation) {
@@ -24,6 +24,7 @@ function successFunction(position) {
     //Log in the console
     console.log("Sunset: "+times.sunset);
 	document.getElementById("container").style.display = "block"; //Display HTML content
+
 }
 
 
@@ -34,3 +35,22 @@ function errorFunction(){
 function processNumber(){
 	console.log("Hello :" + times.sunset);
 };
+
+$("#btn").click(function(event){
+  event.preventDefault(); 
+  $.ajax({
+    url : "api/SMS.php",
+    type: "POST",
+    data : {number:"07708248867",message:"hello"},
+    success: function(data)
+    {
+        $("#result").text("Your sms will be send!");
+		alert("Text sent");
+    },
+    error: function (data)
+    {
+              $("#result").text("Sorry, something wrong happened...");
+			  alert("error?");
+    }
+  });
+});  

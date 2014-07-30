@@ -348,6 +348,48 @@ textarea {
     display: none;
 }
 
+body {
+    background: #090925 url('../img/background-image.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    width: 100%
+}
+
+.sunsetTime {
+    font-family: 'Roboto Slab', serif;
+    font-size: 32px;
+    color: white;
+    margin: 0 auto;
+    /*max-width: 400px;*/
+    /*display: block;*/
+}
+
+.locationLabel {
+    font-family: 'Roboto Slab', serif;
+    font-size: 30px;
+    margin: 0 auto;
+}
+
+.sendAlertsLabel {
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
+    font-size: 25px;
+    margin: 0 auto;
+}
+
+.numberField {
+    width: 500px;
+    height: 35px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+.submitBtn {
+    height: 35px;
+}
+
 /*Desktop*/
 @media all and (min-width: 1024px) {
     .icon {

@@ -13,9 +13,11 @@ function sendSMS($Number,$Message){
 		'Body' => "$Message",   
 ));
 		echo "Sending the message $Message to $Number";
+		return "Text sent successfully";
 	}
 	catch (Exception $error){
 		echo 'Error: ', $error->getMessage(), "\n";
+		return "Error : $error->getMessage()";
 	}
 }
 
