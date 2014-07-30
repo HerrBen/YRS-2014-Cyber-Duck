@@ -38,7 +38,7 @@ $('.numberField').keypress(function(event) {
     var code = (event.keyCode ? event.keyCode : event.which);
     if (!(
             (code >= 48 && code <= 57) //numbers
-            || (code == 46) //full stop
+            || (code == 32) || (code == 43) || (code == 45) //space and  + and -
         )
         || (code == 46 && $(this).val().indexOf('.') != -1)
        )
