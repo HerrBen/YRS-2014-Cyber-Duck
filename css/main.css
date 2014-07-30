@@ -349,12 +349,9 @@ textarea {
 }
 
 body {
-    background: #090925 url('../img/background-image.png') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
+    background-image: url('../img/background-image.png');
+    background-repeat: no-repeat;
     background-size: cover;
-    width: 100%
 }
 
 .sunsetTime {
@@ -369,6 +366,7 @@ body {
 .locationLabel {
     font-family: 'Roboto Slab', serif;
     font-size: 30px;
+    height: 30px;
     margin: 0 auto;
 }
 
@@ -384,6 +382,7 @@ body {
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
     font-size: 30px;
     text-align: center;
+    margin: 5px 0 15px 0;
 }
 
 .submitBtn {
