@@ -369,18 +369,18 @@ body {
     font-size: 30px;
     height: 30px;
     vertical-align: center;
+
+    display: inline-block;
+    margin-top: 0px;
+    margin-left: 10px;
+    margin-right: auto;
+    height: 100%;
 }
 
 .location img {
     display: inline-block;
-    margin: 0 auto;
+    margin: 0 7px 10px;
     vertical-align: middle;
-    height: 100%;
-}
-.location span {
-    display: inline-block;
-    margin-left: 10px;
-    margin-right: auto;
     height: 100%;
 }
 
