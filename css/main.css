@@ -52,6 +52,7 @@ hr {
     padding: 0;
 }
 
+
 /*
  * Remove the gap between images, videos, audio and canvas and the bottom of
  * their containers: h5bp.com/i/440
@@ -98,7 +99,9 @@ textarea {
    ========================================================================== */
 
 
-
+#container {
+	display : none; /* so the user sees nothing unless the location is provided in JS */
+}
 
 
 
