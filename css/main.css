@@ -317,10 +317,6 @@ textarea {
     background-image: url('../img/sunlight.png');
 }
 
-.sunsetTimeLabel {
-    margin: 32px 0 0 0;
-}
-
 .horizonLow {
     background-image: url('../img/sun-horizon-low.png');
 }
@@ -339,8 +335,8 @@ textarea {
 
 .clock.flip-clock-wrapper {
     width: 100%;
-    max-width: 350px;
-    margin: 0 auto;
+    max-width: 300px;
+    margin: 0 auto 30px auto;
 }
 .flip-clock-divider.seconds {
     display: none;
@@ -353,12 +349,21 @@ textarea {
 }
 
 body {
-    background-image: url('../img/background-image.png');
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: url('../img/background-image.png') no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
 }
 
 .sunsetTime {
+    font-family: 'Roboto Slab', serif;
+    font-size: 32px;
+    color: white;
+    margin: 32px 0 0 0;
+}
+
+.sunsetLabel {
     font-family: 'Roboto Slab', serif;
     font-size: 32px;
     color: white;
@@ -369,6 +374,7 @@ body {
     font-family: 'Roboto Slab', serif;
     font-size: 30px;
     height: 30px;
+    vertical-align: center;
 }
 
 .submitBtn {
@@ -415,8 +421,8 @@ body {
 }
 
 .centerClock {
-    width: 350px;
-    max-width: 350px;
+    width: 300px;
+    max-width: 300px;
     margin: 0 auto;
 }
 
@@ -429,9 +435,10 @@ body {
     }
 
     .centerClass {
-    margin: 0 auto;
-    max-width: 1080px;
-    text-align: center;
+        margin: 0 auto;
+        max-width: 1080px;
+        text-align: center;
+        vertical-align: center;
     }
 
     .fieldSize {
@@ -441,7 +448,7 @@ body {
     .sendAlertsLabel {
         font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
         font-size: 20px;
-        margin: 50px auto 0 auto;
+        margin: 40px auto 0 auto;
         text-align: center;
         max-width: 500px;
     }
@@ -473,7 +480,7 @@ body {
     .sendAlertsLabel {
         font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
         font-size: 20px;
-        margin: 50px auto 0 auto;
+        margin: 40px auto 0 auto;
         text-align: center;
         max-width: 720px;
     }
@@ -505,7 +512,7 @@ body {
     .sendAlertsLabel {
         font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
         font-size: 20px;
-        margin: 50px auto 0 auto;
+        margin: 40px auto 0 auto;
         text-align: center;
         max-width: 320px;
     }
