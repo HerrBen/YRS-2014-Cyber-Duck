@@ -4,42 +4,13 @@ var times;
 var latitude;
 var longitude;
 
+//event hooks
+//process location only when document is ready to be manipulated
 $(document).ready(function() {
-		get_location();
+		get_location(); 
 });
 
-
-function get_location() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
-	} 
-};
-
-function successFunction(position) {
-    latitude = position.coords.latitude;
-    longitude = position.coords.longitude;
-	//codeLatLng(lat, lng);
-    // Get sunset time
-    times = SunCalc.getTimes(new Date(), latitude, longitude);
-    //Log in the console
-    console.log("Sunset: "+times.sunset);
-	document.getElementById("container").style.display = "block"; //Display HTML content
-
-};
-
-
-function errorFunction(){
-    alert("Sorry, you can't use this website, please enable location services");
-};
-
-function processNumber(){
-	console.log("Hello :" + times.sunset);
-};
-
-function changeToConfirmation(){
-	$(".numberForm").html("Done");
-};
-
+//When submit phone number button is pressed, post to SMS.php and transform into relevant message
 $(".submitBtn").click(function(event){
   event.preventDefault(); 
   $.ajax({
@@ -59,11 +30,45 @@ $(".submitBtn").click(function(event){
 			  console.log("text was not sent");
     }
   });
-})
+});
+
+//Validate phone number by checking characters
+$('.numberField').keyup(function () {
+    if (this.value != this.value.replace(/[^0-9\.]/g, '')) {
+       this.value = this.value.replace(/[^0-9\.]/g, '');
+    }
+});
+
+/*Functions*/
+//Check if geolocation is present, then jump to respective function
+function get_location() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(successFunction, errorFunction);
+	} 
+}
+
+//If geolocating is successful proceed to calculate sunset  times
+function successFunction(position) {
+    latitude = position.coords.latitude;
+    longitude = position.coords.longitude;
+	//codeLatLng(lat, lng);
+    // Get sunset time
+    times = SunCalc.getTimes(new Date(), latitude, longitude);
+    //Log in the console
+    console.log("Sunset: "+times.sunset);
+	document.getElementById("container").style.display = "block"; //Display HTML content
+
+}
 
 
+function errorFunction(){
+    alert("Sorry, you can't use this website, please enable location services");
+}
 
-$('.numberField').keyup(function() {
-    var $th = $(this);
-    $th.val( $th.val().replace(/[^a-zA-Z0-9]/g, function(str) { alert('You typed " ' + str + ' ".\n\nPlease use only letters and numbers.'); return ''; } ) );
+function processNumber(){
+	console.log("Hello :" + times.sunset);
+}
+
+function changeToConfirmation(){
+	$(".numberForm").html("Done");
 }
