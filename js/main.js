@@ -97,6 +97,7 @@ function getSetTimes(){
 	countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000);
 	console.log("Sunset in : " + countdown + " seconds");
 	console.log("Sunset: " + sunsetTime);
+	clock.countdown = true;
 	clock.setTime(countdown);
 	$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm </p>");	//Set time text
 }
