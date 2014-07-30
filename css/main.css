@@ -351,18 +351,17 @@ body {
     margin: 32px 0 0 0;
 }
 
-<<<<<<< HEAD
 .sunsetLabel {
     font-family: 'Roboto Slab', serif;
     font-size: 32px;
     color: white;
     margin: 32px 0 0 0;
-=======
+}
+
 .enableLocation{
 	font-family: 'Roboto Slab', serif;
     font-size: 50px;
     color:#D0D0D0;
->>>>>>> 475d9c803c6c3515601248d7da9581d18fba8a19
 }
 
 .locationLabel {
