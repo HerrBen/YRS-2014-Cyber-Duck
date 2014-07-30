@@ -25,15 +25,19 @@ function successFunction(position) {
     console.log("Sunset: "+times.sunset);
 	document.getElementById("container").style.display = "block"; //Display HTML content
 
-}
+};
 
 
 function errorFunction(){
     alert("Sorry, you can't use this website, please enable location services");
-}
+};
 
 function processNumber(){
 	console.log("Hello :" + times.sunset);
+};
+
+function changeToConfirmation(){
+	$(".numberForm").html("Done");
 };
 
 $(".submitBtn").click(function(event){
@@ -44,11 +48,9 @@ $(".submitBtn").click(function(event){
     data : {number:$(".numberField").val() ,message:"hello"},
     success: function(data)
     {
-        $("#result").text("Your sms will be send!");
 		console.log("Text Sent to " + $(".numberField").val());
 		console.log("Return: " + data);
-		$(".numberForm").fadeOut(3000);
-		$(".numberForm").html("Done");
+		$(".numberForm").fadeOut(3000, changeToConfirmation());
 		
     },
     error: function (data)
@@ -57,15 +59,11 @@ $(".submitBtn").click(function(event){
 			  console.log("text was not sent");
     }
   });
-});  
+})
 
 
-function validateForm()
-{
 
-    var z = document.forms["phoneNumber"]["num"].value;
-    if(!z.match(/^\d+/))
-        {
-        alert("Please only enter numeric characters.(Allowed input:0-9)")
-        }
+$('.numberField').keyup(function() {
+    var $th = $(this);
+    $th.val( $th.val().replace(/[^a-zA-Z0-9]/g, function(str) { alert('You typed " ' + str + ' ".\n\nPlease use only letters and numbers.'); return ''; } ) );
 }
