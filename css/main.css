@@ -335,7 +335,7 @@ textarea {
 
 .clock.flip-clock-wrapper {
     width: 100%;
-    max-width: 345px;
+    max-width: 350px;
     margin: 0 auto;
 }
 .flip-clock-divider.seconds {
@@ -358,7 +358,6 @@ body {
     font-family: 'Roboto Slab', serif;
     font-size: 32px;
     color: white;
-    margin: 0 auto;
     /*max-width: 400px;*/
     /*display: block;*/
 }
@@ -436,16 +435,30 @@ body {
         width: 160px;
         height: 160px;
     }
+
+    .centerClass {
+    margin: 0 auto;
+    max-width: 1080px;
+    text-align: center;
+    }
 }
 
 /*Tablet*/
 @media all and (min-width: 720px) and (max-width: 1023px) {
-
+    .centerClass {
+    margin: 0 auto;
+    max-width: 720px;
+    text-align: center;
+    }   
 }
 
 /*Mobile*/
 @media all (max-width: 719px) {
-
+    .centerClass {
+    margin: 0 auto;
+    max-width: 320px;
+    text-align: center;
+    }
 
 
 }
