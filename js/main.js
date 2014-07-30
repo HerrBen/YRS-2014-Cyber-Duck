@@ -54,3 +54,14 @@ $("#btn").click(function(event){
     }
   });
 });  
+
+
+function validateForm()
+{
+
+    var z = document.forms["phoneNumber"]["num"].value;
+    if(!z.match(/^\d+/))
+        {
+        alert("Please only enter numeric characters.(Allowed input:0-9)")
+        }
+}
