@@ -104,18 +104,6 @@ textarea {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -360,6 +348,12 @@ body {
     color: white;
     /*max-width: 400px;*/
     /*display: block;*/
+}
+
+.enableLocation{
+	font-family: 'Roboto Slab', serif;
+    font-size: 50px;
+    color:#D0D0D0;
 }
 
 .locationLabel {
