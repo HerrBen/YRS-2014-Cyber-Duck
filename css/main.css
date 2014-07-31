@@ -353,14 +353,14 @@ body {
 
 .untilSunsetLabel {
     font-family: 'Roboto Slab', serif;
-    font-size: 28px;
+    font-size: 32px;
     color: white;
     margin
 }
 
 .sunsetLabel {
     font-family: 'Roboto Slab', serif;
-    font-size: 32px;
+    font-size: 28px;
     color: white;
     margin: 32px 0 0 0;
 }
