@@ -6,6 +6,8 @@ var latitude;
 var longitude;
 var clock = $('.clock').FlipClock({});
 var state; //Night, lower, low, day
+var geocoder = new google.maps.Geocoder();
+var latlng;
 
 /*Event Hooks*/
 //Begin only when document is ready to be manipulated
@@ -59,11 +61,27 @@ function get_location() {
 function successFunction(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
-	//codeLatLng(lat, lng);
+	getLocation(latitude, longitude);	//Grab location and set it
 	getSetTimes(); //Get and set clocks, sunset and sunrise times
-	document.getElementById("container").style.display = "block"; //Unhide HTML content
-
+	$("#container").show();
 }
+
+function getLocation(lat, lng) {
+    latlng = new google.maps.LatLng(lat, lng);	//map api stuff
+    geocoder.geocode({'latLng': latlng}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+		console.log(results)
+		if (results[1]) {
+			$(".location").html('<img src="img/compass.png"><span style="color:#D0D0D0" class="locationLabel centerClass">' + results[2].formatted_address + '</span>') //returns town and country and shoves it into correct place
+		}
+		else {
+          console.log("No results found");
+        }
+      } else {
+        console.log("Geocoder failed due to: " + status);
+      }
+    });
+  }
 
 //Get and set appropriate sunset times, set clocks, set image and state
 function getSetTimes(){
@@ -119,7 +137,7 @@ function setFlipClock(time, countdown){
 
 function errorFunction(){
     $("#container").html('"<div class="enableLocation centerClass">Oh no! It looks like you have location services disabled. Please enable them and try again.  </div>"'); //Displays message to user about geolocating
-	document.getElementById("container").style.display = "block"; //Display HTML content
+	$("#container").show();
 }
 
 function processNumber(){
