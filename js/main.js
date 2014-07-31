@@ -4,7 +4,7 @@ var sunsetTime;
 var sunriseTime;
 var latitude;
 var longitude;
-var clock = $('.clock').FlipClock({});
+var clock = $(".clock").FlipClock({});
 var state; //Night, lower, low, day
 var geocoder = new google.maps.Geocoder();
 var latlng;
@@ -13,18 +13,17 @@ var latlng;
 //Begin only when document is ready to be manipulated
 $(document).ready(function() {
 	get_location(); 
-
-	 $('.btn-about').on('click', function(e){
-        var wh = $('body').height();
+	$(".btn-about").on("click" ,function(e){ //About page button handler
+        var wh = $("body").height();
         e.preventDefault();
-        $(this).toggleClass('close');
-        $('#about').slideToggle('fast', function(){
-            var ah = $('#about').height();
-            $('html, body').animate({scrollTop: wh + ah}, 500);
+        $(this).toggleClass("close");
+        $("#about").slideToggle("fast", function(){
+            var ah = $("#about").height();
+            $("html, body").animate({scrollTop: wh + ah}, 500);
         });
     });
-
 });
+
 
 //When submit phone number button is pressed, post to SMS.php and transform into relevant message
 $(".submitBtn").click(function(event){
@@ -49,7 +48,7 @@ $(".submitBtn").click(function(event){
 });
 
 //Validate phone number by checking characters
-$('.numberField').keypress(function(event) {
+$(".numberField").keypress(function(event) {
     var code = (event.keyCode ? event.keyCode : event.which);
     if (!(
             (code >= 48 && code <= 57) //numbers
@@ -83,7 +82,7 @@ function getLocation(lat, lng) {
     if (status == google.maps.GeocoderStatus.OK) {
 		console.log(results)
 		if (results[1]) {
-			$(".location").html('<img src="img/compass.png"><span style="color:#D0D0D0" class="locationLabel centerClass">' + results[2].formatted_address + '</span>') //returns town and country and shoves it into correct place
+			$(".location").html('<img src="img/compass.png"><span style="color:#D0D0D0" class="locationLabel centerClass">' + results[4].formatted_address + '</span>') //returns town and country and shoves it into correct place
 		}
 		else {
           console.log("No results found");
@@ -108,28 +107,32 @@ function getSetTimes(){
 	if (currentTime.getTime() > sunsetTime.getTime()){	//If sunset has already happened 
 			sunsetTime = SunCalc.getTimes(nextDay, latitude, longitude).sunset;	//calculate TOMMORROW'S sunset time based on longitude and latitude
 			state = "night";
-			$(".icon").replaceWith('<div class="icon moon centerClass"></div>');	//Set moon image
+			$("span.climacon").replaceWith('<span class="climacon horizon sun moon"></span>');	//Set moon image
+			$("#container p.untilSunsetLabel").html("after sunset...");	//after sunset message
 			countdown = ((currentTime.getTime() - sunsetTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, false);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm tomorrow</p>");	//Set time text
 		}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 1)){	//Assuming any time below 1 hour is lower
 			state ="lower"
-			$(".icon").replaceWith('<div class="icon horizonLower centerClass"></div>');	//Set lower image
+			$("span.climacon").replaceWith('<span class="climacon horizon sun lower"></span>');	//Set lower image
+			$("#container p.untilSunsetLabel").html("until sunset...");	
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, true);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm today</p>");	//Set time text
 	}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 4)){	//Assuming any time below 4 hour is low
 			state ="low"
-			$(".icon").replaceWith('<div class="icon horizonLow centerClass"></div>');	//Set low image
+			$("span.climacon").replaceWith('<span class="climacon horizon sun low"></span>');	//Set low image
+			$("#container p.untilSunsetLabel").html("until sunset...");
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, true);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm today</p>");	//Set time text
 	}
 	else if (currentTime.getTime() > sunriseTime.getTime()) { //any other time above sunrise is day
 			state = "day";
-			$(".icon").replaceWith('<div class="icon sunlight centerClass"></div>');	//Set day image
+			$("span.climacon").replaceWith('<span class="climacon horizon sun sunlight"></span>');	//Set day image
+			$("#container p.untilSunsetLabel").html("until sunset...");
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set time until sunset for flipclock and countdown
 			setFlipClock(countdown, true);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm today</p>");	//Set time text
@@ -137,7 +140,6 @@ function getSetTimes(){
 
 	console.log("Sunset in : " + countdown + " seconds");
 	console.log("Sunset: " + sunsetTime);
-	alert(state);
 }
 
 function setFlipClock(time, countdown){
