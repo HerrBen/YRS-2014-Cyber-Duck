@@ -559,11 +559,11 @@ body {
     }
 }
 
-@media all and (min-width: 400px) and (max-width: 719px)
+/*iPhone of 320p width*/
 @media (max-width: 399px) {
     .centerClass {
         margin: 0 auto;
-        max-width: 719px;
+        max-width: 300px;
         text-align: center;
     }
 
