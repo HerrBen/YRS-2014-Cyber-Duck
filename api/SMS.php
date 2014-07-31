@@ -29,5 +29,4 @@ function subscribeNumber($number, $message, $atTime){
 	echo "at $atTime /usr/local/bin/php /www/api/TwilioSMS.php?sendSMS($number, $message)";
 }
 
-
 ?>

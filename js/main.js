@@ -79,28 +79,28 @@ function getSetTimes(){
 	if (currentTime.getTime() > sunsetTime.getTime()){	//If sunset has already happened 
 			sunsetTime = SunCalc.getTimes(nextDay, latitude, longitude).sunset;	//calculate TOMMORROW'S sunset time based on longitude and latitude
 			state = "night";
-			//set moon
+			$(".icon").replaceWith('<div class="icon moon centerClass"></div>');	//Set moon image
 			countdown = ((currentTime.getTime() - sunsetTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, false);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm tomorrow</p>");	//Set time text
 		}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 1)){	//Assuming any time below 1 hour is lower
 			state ="lower"
-			//set lower
+			$(".icon").replaceWith('<div class="icon horizonLower centerClass"></div>');	//Set lower image
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, true);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm today</p>");	//Set time text
 	}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 4)){	//Assuming any time below 4 hour is low
 			state ="low"
-			//set lower
+			$(".icon").replaceWith('<div class="icon horizonLower centerClass"></div>');	//Set low image
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, true);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm today</p>");	//Set time text
 	}
 	else if (currentTime.getTime() > sunriseTime.getTime()) { //any other time above sunrise is day
 			state = "day";
-			//set day
+			$(".icon").replaceWith('<div class="icon sunlight centerClass"></div>');	//Set day image
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set time until sunset for flipclock and countdown
 			setFlipClock(countdown, true);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm today</p>");	//Set time text
@@ -127,5 +127,5 @@ function processNumber(){
 }
 
 function changeToConfirmation(){
-	$(".numberForm").html("Done");
+	$(".numberForm").html('<p class="untilSunsetLabel centerClass">Your message will be sent!</p>');
 }
