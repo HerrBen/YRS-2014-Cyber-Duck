@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /js/
+Disallow: /api/
+Disallow: /css/
+Disallow: /img/
+Disallow: .htaccess/
+Disallow: 404/
+Disallow: browserconfig.xml

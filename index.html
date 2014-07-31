@@ -17,6 +17,7 @@
 
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href="css/climacons-font.css" rel="stylesheet">
 		
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
@@ -53,6 +54,9 @@
 		<div id="container">
 
             <div class="icon horizonLow centerClass"></div>
+            <!-- <div class="icon horizonLow centerClass"></div> -->
+            <p class="centerClass"><span class="climacon horizon sun low"></span></p>
+
             <div class="clock"></div>
             <p class="untilSunsetLabel centerClass">until sunset...</p>
             <div id="innerContainer">
@@ -60,12 +64,12 @@
 
                 <div class="location centerClass" style="vertical-align:middle;">
                     <img src="img/compass.png">
-                    <span style="color:#D0D0D0" class="locationLabel centerClass">  London, United Kingdom</span>
+                    <p class="locationLabel centerClass">  London, United Kingdom</p>
                 </div>
 
                 <div class="numberForm">
                     <p class="sendAlertsLabel centerClass">Enter a number to receive SMS alerts before dark:</p>
-                    <form action="" class="centerClass">
+                    <form action="" class="centerClass form">
                         <input type="text" name="phoneNumber" placeholder="Phone Number" class="numberField centerClass" maxlength="20"><br>
                         <input type="submit" value="SUBMIT" class="submitBtn centerClass">
                     </form>
@@ -74,6 +78,28 @@
         </div>
 
 		<script src="js/main.js"></script>
+
+        <a href="#about" class="btn-about">
+            <span class="btn-open">?</span>
+            <span class="btn-close">&times;</span>
+        </a>
+            <div class="about" id="about">
+                <div>
+                    <h2>About us</h2>
+                    <p>'Before Dark' is a service that sends SMS reminders at intervals of your choice before sunset. Simply enter a phone number, select intervals to be notified at and hit submit. Before Dark will then send messages at intervals selected. It's that simple.</p>
+                        <br>
+                    <p>Before Dark was developed by Harjot Singh, Jake Sieradzki, Daniel Vaughan, Maya and Asha Wills for #YRS2014 Festival of Code. With thanks to all the team at Cyber-Duck and the Twilio team for their support.</p>
+                        <br>
+                    <p>© Before Dark, 2014 (http://opensource.org/licenses/MIT)</p>
+                        <br>
+                        <br>
+                    <div class="Copyright">
+                        <p class="copyrightLabel">&copy; Copyright Before Dark, 2014</p>
+                    </div>
+                </div>
+            </div>
+
+        <script src="js/main.js"></script>
         
         <!-- Google Analytics -->
         <script>
