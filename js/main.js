@@ -105,11 +105,11 @@ function getSetTimes(){
 	console.log("Current Day: " +currentTime);
 	console.log("Next Day:" +nextDay);
 	if (currentTime.getTime() > sunsetTime.getTime()){	//If sunset has already happened 
+			countdown = ((currentTime.getTime() - sunsetTime.getTime())/1000); //set countdown for flipclock and countdown
 			sunsetTime = SunCalc.getTimes(nextDay, latitude, longitude).sunset;	//calculate TOMMORROW'S sunset time based on longitude and latitude
 			state = "night";
 			$("span.climacon").replaceWith('<span class="climacon horizon sun moon"></span>');	//Set moon image
 			$("#container p.untilSunsetLabel").html("after sunset...");	//after sunset message
-			countdown = ((currentTime.getTime() - sunsetTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, false);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm tomorrow</p>");	//Set time text
 		}
