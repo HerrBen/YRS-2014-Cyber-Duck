@@ -12,7 +12,18 @@ var latlng;
 /*Event Hooks*/
 //Begin only when document is ready to be manipulated
 $(document).ready(function() {
-		get_location(); 
+	get_location(); 
+
+	 $('.btn-about').on('click', function(e){
+        var wh = $('body').height();
+        e.preventDefault();
+        $(this).toggleClass('close');
+        $('#about').slideToggle('fast', function(){
+            var ah = $('#about').height();
+            $('html, body').animate({scrollTop: wh + ah}, 500);
+        });
+    });
+
 });
 
 //When submit phone number button is pressed, post to SMS.php and transform into relevant message
