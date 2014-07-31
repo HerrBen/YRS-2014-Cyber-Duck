@@ -63,8 +63,7 @@ function successFunction(position) {
     longitude = position.coords.longitude;
 	getLocation(latitude, longitude);	//Grab location and set it
 	getSetTimes(); //Get and set clocks, sunset and sunrise times
-	document.getElementById("container").style.display = "block"; //Unhide HTML content
-
+	$("#container").show();
 }
 
 function getLocation(lat, lng) {
@@ -138,7 +137,7 @@ function setFlipClock(time, countdown){
 
 function errorFunction(){
     $("#container").html('"<div class="enableLocation centerClass">Oh no! It looks like you have location services disabled. Please enable them and try again.  </div>"'); //Displays message to user about geolocating
-	document.getElementById("container").style.display = "block"; //Display HTML content
+	$("#container").show();
 }
 
 function processNumber(){
