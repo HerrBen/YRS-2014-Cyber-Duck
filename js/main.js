@@ -111,7 +111,7 @@ function getSetTimes(){
 	}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 4)){	//Assuming any time below 4 hour is low
 			state ="low"
-			$(".icon").replaceWith('<div class="icon horizonLower centerClass"></div>');	//Set low image
+			$(".icon").replaceWith('<div class="icon horizonLow centerClass"></div>');	//Set low image
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, true);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm today</p>");	//Set time text
@@ -126,7 +126,7 @@ function getSetTimes(){
 
 	console.log("Sunset in : " + countdown + " seconds");
 	console.log("Sunset: " + sunsetTime);
-	
+	alert(state);
 }
 
 function setFlipClock(time, countdown){

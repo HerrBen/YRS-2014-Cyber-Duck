@@ -23,11 +23,27 @@ function sendSMS($Number,$Message){
 	
 }
 
-//Creates a cron job for sending text at certain time
-
+//Inserts number into db for sending
 function subscribeNumber($number, $message, $atTime){
-//	exec("at $atTime /usr/local/bin/php /www/api/TwilioSMS.php?sendSMS($number, $message)");	
-	echo "at $atTime /usr/local/bin/php /www/api/TwilioSMS.php?sendSMS($number, $message)";
+	// Create connection
+	$con = mysqli_connect("127.0.0.1","root","","beforedark");
+	// Check connection
+	if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
+
+$number = mysqli_real_escape_string($number);
+$message = mysqli_real_escape_string($message);
+$atTime = mysqli_real_escape_string($atTime);
+
+$sql="INSERT INTO queue (number, message, atTime)
+VALUES ('$number', '$message', '$atTime')";
+
+	mysqli_close($con);
+}
+
+$date = date('m/d/Y h:i:s a', time());
+echo "$date";
+//subscribeNumber("07708248867", "Test sent at "
 
 ?>
