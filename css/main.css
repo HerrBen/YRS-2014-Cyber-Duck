@@ -324,7 +324,7 @@ textarea {
 .clock.flip-clock-wrapper {
     width: 100%;
     max-width: 300px;
-    margin: 0 auto 30px auto;
+    margin: 0 auto 5px auto;
 }
 .flip-clock-divider.seconds {
     display: none;
@@ -349,6 +349,13 @@ body {
     font-size: 32px;
     color: white;
     margin: 32px 0 0 0;
+}
+
+.untilSunsetLabel {
+    font-family: 'Roboto Slab', serif;
+    font-size: 28px;
+    color: white;
+    margin
 }
 
 .sunsetLabel {
@@ -442,7 +449,7 @@ body {
     }
 
     .sendAlertsLabel {
-        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
+        font-family:'Open Sans', sans-serif;
         font-size: 20px;
         margin: 40px auto 0 auto;
         text-align: center;
@@ -452,7 +459,7 @@ body {
     .numberField {
         height: 35px;
         width: 500px;
-        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
+        font-family: 'Open Sans', sans-serif;
         font-size: 20px;
         text-align: center;
         margin: 5px auto 10px auto;
@@ -471,7 +478,7 @@ body {
     }   
 
     .sendAlertsLabel {
-        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
+        font-family: 'Open Sans', sans-serif;
         font-size: 20px;
         margin: 40px auto 0 auto;
         text-align: center;
@@ -481,7 +488,7 @@ body {
     .numberField {
         height: 35px;
         width: 500px;
-        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
+        font-family: 'Open Sans', sans-serif;
         font-size: 20px;
         text-align: center;
         margin: 5px auto 10px auto;
@@ -500,7 +507,7 @@ body {
     }
 
     .sendAlertsLabel {
-        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
+        font-family: 'Open Sans', sans-serif;
         font-size: 20px;
         margin: 40px auto 0 auto;
         text-align: center;
@@ -510,7 +517,7 @@ body {
     .numberField {
         height: 35px;
         width: 350px;
-        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", serif;
+        font-family: 'Open Sans', sans-serif;
         font-size: 20px;
         text-align: center;
         margin: 10px auto 40px auto;
