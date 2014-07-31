@@ -232,8 +232,6 @@ textarea {
     display: none;
 }
 
-/* askdjahksjhakjshdkajhsdajkshdkajshdkajshdkajhsdkajhskdjahskdjhaskdjhaskjdhkasjdh*/
-
 .clock.flip-clock-wrapper {
     width: 100%;
     margin: 15px auto 5px auto;
@@ -242,9 +240,19 @@ textarea {
     height: 100px;
 }
 
+.Copyright {
+    border-top-color: white;
+    border-top-width: 2px;
+    border-top-style: solid;
+    width: 300px;
+    text-align: center;
+    margin: 0 auto;
+}
 
-
-/* askdjahksjhakjshdkajhsdajkshdkajshdkajshdkajhsdkajhskdjahskdjhaskdjhaskjdhkasjdh*/
+.copyrightLabel {
+    text-align: center;
+    margin: 10px auto 0 auto;
+}
 
 body {
     background: url('../img/background-image.png') no-repeat center center fixed;
