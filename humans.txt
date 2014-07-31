@@ -19,8 +19,9 @@
 	Twitter: @dylanatsmith
 	From: Toronto, Canada
 
-	Mentor: Benjamin
-	Twitter:
+	Mentor: Benjamin Maugain
+	Twitter: @HerrBen
+	From: France
 
 	Person who can use git from Unix terminal better than Daniel: Mark Garratt
 
