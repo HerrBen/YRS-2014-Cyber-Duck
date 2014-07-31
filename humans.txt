@@ -1,0 +1,36 @@
+/* TEAM */
+	Supposed Deity of Back-End: Harjot Singh
+	Contact: harjot [at] herkul.com
+	Twitter: @Harjot1Singh
+	From: London, England
+
+	Back-End Tinker: Daniel Vaughan
+	Contact: dvaughan1616 [at] yahoo.co.uk
+	Twitter: @flipstone_42
+	From: Hertfordshire, England
+
+	Master of Front-End: Jake Sieradzki
+	Contact: jake.sieradzki [at] gmail.com
+	Twitter: @jakesieradzki
+	From: London, England
+
+/* THANKS */
+	Center Lead: Dylan Smith
+	Twitter: @dylanatsmith
+	From: Toronto, Canada
+
+	Mentor: Benjamin
+	Twitter:
+
+	Person who can use git from Unix terminal better than Daniel: Mark Garratt
+
+	Front-end genius: Ramon Lapenta
+	Twitter: @ramono
+	From: Venezuala
+
+/* SITE */
+	Last update: 2014/07/31
+	Language: English
+	Doctype: HTML5, php, Javascript
+	IDE: Xcode, Sublime Text 2, Photoshop, Gimp, Notepad++, Gedit
+	APIs: Google Maps, Geolocation, Suncalc, Flipclock
