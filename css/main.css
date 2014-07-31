@@ -323,17 +323,9 @@ textarea {
 
 .clock.flip-clock-wrapper {
     width: 100%;
-    max-width: 300px;
-    margin: 0 auto 5px auto;
-}
-.flip-clock-divider.seconds {
-    display: none;
-}
-.flip.play:nth-of-type(5) {
-    display: none;
-}
-.flip.play:nth-of-type(6) {
-    display: none;
+    margin: 15px auto 5px auto;
+    max-width: 460px;
+    text-align: center;
 }
 
 body {
