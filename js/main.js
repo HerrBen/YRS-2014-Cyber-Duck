@@ -97,7 +97,7 @@ function getSetTimes(){
 			$("span.climacon").replaceWith('<span class="climacon icon horizon sun moon"></span>');	//Set moon image
 			$("#container p.untilSunsetLabel").html("after sunset...");	//after sunset message
 			setFlipClock(countdown, false);
-			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm tomorrow</p>");	//Set time text
+			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes()) + "pm tomorrow</p>");	//Set time text
 		}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 1)){	//Assuming any time below 1 hour is lower
 			state ="lower"
@@ -105,7 +105,7 @@ function getSetTimes(){
 			$("#container p.untilSunsetLabel").html("until sunset...");	
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, true);
-			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm today</p>");	//Set time text
+			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes() + "pm today</p>");	//Set time text
 	}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 4)){	//Assuming any time below 4 hour is low
 			state ="low"
@@ -113,7 +113,7 @@ function getSetTimes(){
 			$("#container p.untilSunsetLabel").html("until sunset...");
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, true);
-			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm today</p>");	//Set time text
+			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes()) + "pm today</p>");	//Set time text
 	}
 	else if (currentTime.getTime() > sunriseTime.getTime()) { //any other time above sunrise is day
 			state = "day";
@@ -121,7 +121,7 @@ function getSetTimes(){
 			$("#container p.untilSunsetLabel").html("until sunset...");
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set time until sunset for flipclock and countdown
 			setFlipClock(countdown, true);
-			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+sunsetTime.getMinutes() + "pm today</p>");	//Set time text
+			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes()) + "pm today</p>");	//Set time text
 	}
 
 	console.log("Sunset in : " + countdown + " seconds");
@@ -178,4 +178,8 @@ function onSubmitClick(event){
 function onSendAgainClick(event){
 	event.preventDefault();
 	$(".numberForm").html(numberForm);
+}
+
+function zeroCorrect{
+	return n > 9 ? "" + n; "0" + n;
 }
