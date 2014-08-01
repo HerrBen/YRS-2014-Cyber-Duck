@@ -413,6 +413,17 @@ body {
     display: block;
 }
 
+.overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:500px;
+    height:500px;
+    text-align: center;
+    vertical-align: middle;
+    background:url("../img/loading.gif") no-repeat;
+}
+
 /*Desktop*/
 @media all and (min-width: 1024px) {
 
