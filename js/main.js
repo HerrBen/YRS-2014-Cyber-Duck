@@ -74,6 +74,7 @@ function successFunction(position) {
 	getLocation(latitude, longitude);	//Grab location and set it
 	getSetTimes(); //Get and set clocks, sunset and sunrise times
 	$("#container").show();
+	$(".overlay").fadeOut('fast');
 }
 
 function getLocation(lat, lng) {

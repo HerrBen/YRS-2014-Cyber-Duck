@@ -299,7 +299,7 @@ body {
 }
 
 .locationField {
-    width: 300px;
+    width: 290px;
     vertical-align: middle;
     border-radius: 10px;
     border-style: solid;
@@ -354,7 +354,7 @@ body {
 }
 
 .form {
-    padding-bottom: 20px;
+    padding-bottom: 60px;
 }
 
 .questionMark {
@@ -385,8 +385,8 @@ body {
     font-size: 24px;
     text-decoration: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 10px;
+    right: 10px;
 }
 .about {
     display: none;
@@ -414,14 +414,17 @@ body {
 }
 
 .overlay{
-    position:absolute;
-    top:0;
-    left:0;
-    width:500px;
-    height:500px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     text-align: center;
     vertical-align: middle;
-    background:url("../img/loading.gif") no-repeat;
+    background: rgba(0,0,0,0.6) url("../img/loading.gif") 50% no-repeat;
+    margin: 0 auto;
+    background-size: 300px;
+    z-index: 100;
 }
 
 /*Desktop*/
@@ -592,6 +595,10 @@ body {
 
 /*iPhone of 320p width*/
 @media (max-width: 399px) {
+    .questionMark {
+        padding: 3px;
+    }
+
     .centerClass {
         margin: 0 auto;
         max-width: 300px;
@@ -627,7 +634,7 @@ body {
 
     .locationLabel {
         font-family: 'Roboto Slab', serif;
-        font-size: 23px;
+        font-size: 22px;
         height: 30px;
         vertical-align: center;
         color: #D0D0D0;
@@ -640,7 +647,7 @@ body {
     .clock.flip-clock-wrapper ul {
       position: relative;
       float: left;
-      margin: 4px;
+      margin: 3px;
       width: 40px;
       height: 60px;
       font-size: 50px;
