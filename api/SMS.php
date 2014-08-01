@@ -2,7 +2,7 @@
 
 //Twilio connectors
 
-
+function sendSMS($Number, $Message){
 	try{
 		require('Twilio.php'); 
 		$account_sid = 'AC0b0dad90111358a74ba2de77d0e41791'; 
@@ -14,17 +14,20 @@
 	'From' => "+441672500046", 
 	'Body' => "$Message",   
 ));
-		echo "Sending the message $Message to $Number was successful";
+		echo "Success";
 	}
 	catch (Exception $error){
 		echo 'Error: ', $error->getMessage(), "\n"; 
 	
 	}
-	
+}
 
 
 //Inserts number into db for sending
 function subscribeNumber($number, $message, $atTime){
+	//Send welcome SMS
+	if (sendSMS($number, "You've been signed up to receive sunset alerts from beforedark.co") = "Success"){
+	
 	// Create connection
 	$con = mysqli_connect("127.0.0.1","root","","beforedark");
 	// Check connection
@@ -32,18 +35,24 @@ function subscribeNumber($number, $message, $atTime){
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$number = mysqli_real_escape_string($number);
-$message = mysqli_real_escape_string($message);
-$atTime = mysqli_real_escape_string($atTime);
+	$number = mysqli_real_escape_string($number);
+	$message = mysqli_real_escape_string($message);
+	$atTime = mysqli_real_escape_string($atTime);
 
-$sql="INSERT INTO queue (number, message, atTime)
-VALUES ('$number', '$message', '$atTime')";
+	$sql="INSERT INTO queue (number, message, atTime) VALUES ('$number', '$message', '$atTime')";
 
 	mysqli_close($con);
+	echo "Success";
+	}
+	else echo "Failure";
 }
 
-$date = date('m/d/Y h:i:s a', time());
-echo "$date";
-//subscribeNumber("07708248867", "Test sent at "
+$Number = $_POST['number'];
+$Message = $_POST['Message'];
+$atTime = $_POST('atTime'];
+
+subscribeNumber($Number, $Message, $atTimw);
+
+
 
 ?>

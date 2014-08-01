@@ -9,6 +9,7 @@ var state; //Night, lower, low, day
 var geocoder = new google.maps.Geocoder();
 var latlng;
 var message;
+var numberForm = $(".numberForm").html();
 
 /*Event Hooks*/
 //Begin only when document is ready to be manipulated
@@ -28,28 +29,7 @@ $(document).ready(function() {
 
 
 //When submit phone number button is pressed, post to SMS.php and transform into relevant message
-$(".submitBtn").click(function(event){
-  event.preventDefault(); 
-  message = "hello";
-  var formData = {Number: $(".numberField").val(), Message: message};
-  $.ajax({
-    url : "api/SMS.php",
-    type: "POST",
-    data : formData,
-    success: function(data)
-    {
-		console.log("Text Sent to " + $(".numberField").val());
-		console.log("Return: " + data);
-		$(".numberForm").fadeOut(3000, changeToConfirmation());
-		
-    },
-    error: function (data)
-    {
-              $("#result").text("Sorry, something wrong happened...");
-			  console.log("text was not sent");
-    }
-  });
-});
+$(".submitBtn").click(onSubmitClick);
 
 //Validate phone number by checking characters
 $(".numberField").keypress(function(event) {
@@ -81,6 +61,7 @@ function successFunction(position) {
 	$(".overlay").fadeOut('fast');
 }
 
+//Gets the location based on longitude and latitude from google maps 
 function getLocation(lat, lng) {
     latlng = new google.maps.LatLng(lat, lng);	//map api stuff
     geocoder.geocode({'latLng': latlng}, function(results, status) {
@@ -147,12 +128,13 @@ function getSetTimes(){
 	console.log("Sunset: " + sunsetTime);
 }
 
+//Sets the flipclock's current time and whether it counts up or down
 function setFlipClock(time, countdown){
 	clock.countdown = countdown;
 	clock.setTime(time);
 }
 
-
+//If geolcating is rejected
 function errorFunction(){
     $("#container").html('"<div class="enableLocation centerClass">Oh no! It looks like you have location services disabled. Please enable them and try again.  </div>"'); //Displays message to user about geolocating
 	$("#container").show();
@@ -163,5 +145,37 @@ function processNumber(){
 }
 
 function changeToConfirmation(){
-	$(".numberForm").html('<p class="untilSunsetLabel centerClass">Your message will be sent!</p>');
+	$(".numberForm").html('<p class="untilSunsetLabel centerClass">Your message will be sent!</p><form action="" class="centerClass form"><input type="submit" value="Send another" class="submitBtn centerClass">');
+	$(".submitBtn").click(onSendAgainClick);
+}
+
+//Event handler for submit button click
+function onSubmitClick(event){
+  event.preventDefault(); 
+  message = "You've been signed up to receive sunset alerts from beforedark.co";
+   var formData = {number: $(".numberField").val(), Message: message, atTime: "2014/08/01 16:24:56"};
+   $(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
+  $.ajax({
+    url : "api/SMS.php",
+    type: "POST",
+    data : formData,
+    success: function(data)
+    {
+		console.log("Text Sent to " + $(".numberField").val());
+		console.log("Return: " + data);
+		$(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
+		
+    },
+    error: function (data)
+    {
+              $(".numberForm").text("Sorry, something wrong happened...");
+			  console.log("text was not sent");
+    }
+  }); 
+}
+
+//change event handler for button to this
+function onSendAgainClick(event){
+	event.preventDefault();
+	$(".numberForm").html(numberForm);
 }

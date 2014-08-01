@@ -102,6 +102,7 @@ textarea {
 
 #container {
 	/*display : none;*/ /*so the user sees nothing unless the location is provided in JS*/
+/*	display : none; /* so the user sees nothing unless the location is provided in JS */
 }
 
 
