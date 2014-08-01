@@ -308,6 +308,7 @@ body {
     background-color: #7A3494;
 
     text-align: center;
+	display: none;
 }
 
 .locationField {
