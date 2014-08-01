@@ -35,7 +35,6 @@ $(document).ready(function() {
         });
     });	
 	$(".chosen-select").chosen().val(["60", "30", "15", "0"]);
-	$(".chosen-select").
 });
 
 

@@ -14,7 +14,9 @@ $result = mysql_query("SELECT * FROM queue WHERE atTime LIKE '$date' AND process
 if ($result) {
 while($row = mysql_fetch_array($result)){
 	if (sendSMS($row['number'],$row['message']) == "Success") {
-		mysql_query("UPDATE Persons SET processed = 1 WHERE number = $row['number'] AND message = '$row['message']'");
+	$rowNumber = $row['number'];
+	$rowMessage = $row['message'];
+		mysql_query("UPDATE queue SET processed = 1 WHERE number = $rowNumber AND message = '$rowMessage'");
 	}
 }
 }
