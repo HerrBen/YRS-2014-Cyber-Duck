@@ -13,6 +13,7 @@ var latlng;
 //Begin only when document is ready to be manipulated
 $(document).ready(function() {
 	get_location(); 
+	$(".chosen-select").chosen();
 	$(".btn-about").on("click" ,function(e){ //About page button handler
         var wh = $("body").height();
         e.preventDefault();
