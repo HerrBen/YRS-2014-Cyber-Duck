@@ -15,12 +15,13 @@
 	From: London, England
 
 /* THANKS */
-	Center Lead: Dylan Smith
+	Centre Lead: Dylan Smith
 	Twitter: @dylanatsmith
 	From: Toronto, Canada
 
 	Mentor: Benjamin Maugain
-	Twitter: @HerrBen
+	Twitter: @HerrBe
+	From: France
 
 	Person who can use git from Unix terminal better than Daniel: Mark Garratt
 	Twitter: @MGarratt88
