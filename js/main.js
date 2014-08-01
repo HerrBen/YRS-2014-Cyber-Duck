@@ -146,7 +146,7 @@ function processNumber(){
 }
 
 function changeToConfirmation(){
-	$(".numberForm").html('<p class="untilSunsetLabel centerClass">Your message will be sent!</p><form action="" class="centerClass form"><input type="submit" value="Send another" class="submitBtn centerClass">');
+	$(".numberForm").html('<p class="untilSunsetLabel centerClass">Your message will be sent!</p><form action="" class="centerClass form"><input type="submit" value="Send another" class="submitBtn centerClass anotherButton">');
 	$(".submitBtn").click(onSendAgainClick);
 }
 

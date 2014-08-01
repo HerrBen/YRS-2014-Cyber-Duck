@@ -354,6 +354,10 @@ body {
     outline: none;
 }
 
+.anotherButton {
+    width: 200px;
+}
+
 .form {
     padding-bottom: 60px;
 }
@@ -650,7 +654,7 @@ body {
 
     .numberField {
         height: 35px;
-        width: 300px;
+        width: 258px;
         font-family: 'Open Sans', sans-serif;
         font-size: 20px;
         text-align: center;
