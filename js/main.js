@@ -34,7 +34,8 @@ $(document).ready(function() {
             $("html, body").animate({scrollTop: wh + ah}, 500);
         });
     });	
-	
+	$(".chosen-select").chosen().val(["60", "30", "15", "0"]);
+	$(".chosen-select").
 });
 
 
@@ -196,7 +197,7 @@ function onSubmitClick(event) {
 		console.log("Number was not valid.");
 	}
 
-  
+  console.log($(".chosen-select").chosen().val());
 }
 
 //change event handler for button to this
