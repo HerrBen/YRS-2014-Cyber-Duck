@@ -15,14 +15,22 @@
 	font-weight: normal;
 	line-height: 1;
 	color: white;
-	font-size: 144px;
-	-webkit-font-smoothing: antialiased;
-	-webkit-animation-name: pulse;
-  	-webkit-animation-duration: 2s;
-  	-webkit-animation-iteration-count: infinite;
-	animation-name: pulse;
-  	animation-duration: 2s;
-  	animation-iteration-count: infinite;
+}
+/*Sunlight Icon at top*/
+.climacon.icon:before {
+	font-size: 250px;
+	line-height: 70px;
+	display: block;
+	top: -9999px;
+	left: -10002px;
+	margin: 50px auto;
+    -webkit-font-smoothing: antialiased;
+    -webkit-animation-name: pulse;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: pulse;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
 }
 @-webkit-keyframes pulse {
   from {  text-shadow: 0 0 9px rgba(254, 186, 90, 1); }
@@ -34,6 +42,19 @@
   50% { text-shadow: 0 0 25px rgba(254, 186, 90, 1); }
   to { text-shadow: 0 0 9px rgba(254, 186, 90, 1); }
 }
+/*Compass Icon for Location*/
+.climacon.compassIcon:before {
+	display: inline-block;
+    margin: 0 7px 10px;
+    vertical-align: middle;
+    height: 30px;
+    width: 30px;
+    font-size: 55px;
+    line-height: 23px;
+    color: #D0D0D0;
+    text-shadow:2px 2px 8px rgba(0,0,0,0.6);
+}
+
 .climacon.cloud:before {
 	content: "\e000";
 }
@@ -188,6 +209,7 @@
 }
 .climacon.sun:before {
 	content: "\e028";
+	font-size: 200px;
 }
 .climacon.sun.set:before,
 .climacon.sunset:before {
