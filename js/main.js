@@ -106,6 +106,7 @@ function getSetTimes(){
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, true);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes()) + "pm today</p>");	//Set time text
+
 	}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 4)){	//Assuming any time below 4 hour is low
 			state ="low"
@@ -151,27 +152,39 @@ function changeToConfirmation(){
 
 //Event handler for submit button click
 function onSubmitClick(event){
-  event.preventDefault(); 
-  message = "You've been signed up to receive sunset alerts from beforedark.co";
-   var formData = {number: $(".numberField").val(), Message: message, atTime: "2014/08/01 16:24:56"};
-   $(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
-  $.ajax({
-    url : "api/SMS.php",
-    type: "POST",
-    data : formData,
-    success: function(data)
-    {
-		console.log("Text Sent to " + $(".numberField").val());
-		console.log("Return: " + data);
-		$(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
-		
-    },
-    error: function (data)
-    {
-      $(".numberForm").text("Sorry, something wrong happened...");
-	  console.log("text was not sent");
-    }
-  }); 
+	var countryCode = countryForE164Number($(".numberField").val());
+	var isNumberValid = isValidNumber($(".numberField").val(), countryCode);
+	event.preventDefault();
+
+	console.log($(".numberField").val() + "" + isNumberValid);
+
+	if (isNumberValid === true) {
+		 
+		  message = "You've been signed up to receive sunset alerts from beforedark.co";
+		   var formData = {number: $(".numberField").val(), Message: message, atTime: "2014/08/01 16:24:56"};
+		   $(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
+		  $.ajax({
+		    url : "api/SMS.php",
+		    type: "POST",
+		    data : formData,
+		    success: function(data)
+		    {
+				console.log("Text Sent to " + $(".numberField").val());
+				console.log("Return: " + data);
+				$(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
+				
+		    },
+		    error: function (data)
+		    {
+		      $(".numberForm").text("Sorry, something wrong happened...");
+			  console.log("text was not sent");
+		    }
+		  }); 
+	} else {
+		console.log("Number was not valid.");
+	}
+
+  
 }
 
 //change event handler for button to this
