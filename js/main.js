@@ -8,6 +8,7 @@ var clock = $(".clock").FlipClock({});
 var state; //Night, lower, low, day
 var geocoder = new google.maps.Geocoder();
 var latlng;
+var message;
 
 /*Event Hooks*/
 //Begin only when document is ready to be manipulated
@@ -28,10 +29,12 @@ $(document).ready(function() {
 //When submit phone number button is pressed, post to SMS.php and transform into relevant message
 $(".submitBtn").click(function(event){
   event.preventDefault(); 
+  message = "hello";
+  var formData = {Number: $(".numberField").val(), Message: message};
   $.ajax({
     url : "api/SMS.php",
     type: "POST",
-    data : {number:$(".numberField").val() ,message:"hello"},
+    data : formData,
     success: function(data)
     {
 		console.log("Text Sent to " + $(".numberField").val());

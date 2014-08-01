@@ -2,7 +2,7 @@
 
 //Twilio connectors
 
-function sendSMS($Number,$Message){
+
 	try{
 		require('Twilio.php'); 
 		$account_sid = 'AC0b0dad90111358a74ba2de77d0e41791'; 
@@ -21,7 +21,7 @@ function sendSMS($Number,$Message){
 	
 	}
 	
-}
+
 
 //Inserts number into db for sending
 function subscribeNumber($number, $message, $atTime){
