@@ -32,9 +32,11 @@ $(document).ready(function() {
         $("#times").slideToggle("fast", function(){
             var ah = $("#times").height();
             $("html, body").animate({scrollTop: wh + ah}, 500);
-            alert("hello");
+            
         });
+		$(".chosen-container").replaceWith('<div class="chosen-container chosen-container-multi chosen-with-drop chosen-container-active" style="/* width: 0px; */" title=""><ul class="chosen-choices"><li class="search-field"><input type="text" value="Select times" class="default" autocomplete="off" style="width: 0px;"></li></ul><div class="chosen-drop"><ul class="chosen-results"><li class="active-result" data-option-array-index="0">60 minutes</li><li class="active-result" data-option-array-index="1">30 minutes</li><li class="active-result" data-option-array-index="2">15 minutes</li><li class="active-result" data-option-array-index="3">At sunset</li></ul></div></div>');
     });	
+	
 });
 
 
