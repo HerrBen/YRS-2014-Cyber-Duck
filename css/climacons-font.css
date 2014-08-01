@@ -18,7 +18,12 @@
 }
 /*Sunlight Icon at top*/
 .climacon.icon:before {
-	font-size: 200px;
+	font-size: 250px;
+	line-height: 70px;
+	display: block;
+	top: -9999px;
+	left: -10002px;
+	margin: 50px auto;
     -webkit-font-smoothing: antialiased;
     -webkit-animation-name: pulse;
     -webkit-animation-duration: 2s;
