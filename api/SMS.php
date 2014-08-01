@@ -26,7 +26,7 @@ function sendSMS($Number, $Message){
 //Inserts number into db for sending
 function subscribeNumber($number, $message, $atTime){
 	//Send welcome SMS
-	if (sendSMS($number, "You've been signed up to receive sunset alerts from beforedark.co") = "Success"){
+	if (sendSMS($number, "You've been signed up to receive sunset alerts from beforedark.co") == "Success"){
 	
 	// Create connection
 	$con = mysqli_connect("127.0.0.1","root","","beforedark");

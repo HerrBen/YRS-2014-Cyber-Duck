@@ -150,17 +150,19 @@ function changeToConfirmation(){
 }
 
 //Event handler for submit button click
-function onSubmitClick(event){
-	var countryCode = countryForE164Number($(".numberField").val());
-	var isNumberValid = isValidNumber($(".numberField").val(), countryCode);
+function onSubmitClick(event) {
+	var recipientNumber = $(".numberField").val();
+
+	var countryCode = countryForE164Number(recipientNumber);
+	var isNumberValid = isValidNumber(recipientNumber, countryCode);
 	event.preventDefault();
 
-	console.log($(".numberField").val() + "" + isNumberValid);
+	console.log(recipientNumber + " was valid: " + isNumberValid);
 
-	if (isNumberValid === true) {
+	if (isNumberValid == true) {
 		 
 		  message = "You've been signed up to receive sunset alerts from beforedark.co";
-		   var formData = {number: $(".numberField").val(), Message: message, atTime: "2014/08/01 16:24:56"};
+		   var formData = {number: recipientNumber, Message: message, atTime: "2014/08/01 16:24:56"};
 		   $(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
 		  $.ajax({
 		    url : "api/SMS.php",
@@ -168,7 +170,7 @@ function onSubmitClick(event){
 		    data : formData,
 		    success: function(data)
 		    {
-				console.log("Text Sent to " + $(".numberField").val());
+				console.log("Text Sent to " + recipientNumber);
 				console.log("Return: " + data);
 				$(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
 				

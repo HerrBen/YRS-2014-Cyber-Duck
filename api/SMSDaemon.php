@@ -11,7 +11,6 @@ if (mysqli_connect_errno()) {
 $date = date('Y-m-d H:i', time())."%";
 $result = mysql_query("SELECT * FROM queue WHERE atTime LIKE '$date' AND processed = 0");
 
-
 if ($result) {
 while($row = mysql_fetch_array($result)){
 	if (sendSMS($row['number'],$row['message']) = "Success") {
