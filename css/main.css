@@ -101,7 +101,7 @@ textarea {
 
 
 #container {
-	display : none; /* so the user sees nothing unless the location is provided in JS */
+/*	display : none; /* so the user sees nothing unless the location is provided in JS */
 }
 
 
@@ -426,6 +426,7 @@ body {
     margin: 0 auto;
     background-size: 300px;
     z-index: 100;
+	display : none;
 }
 
 /*Desktop*/
