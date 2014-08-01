@@ -168,8 +168,8 @@ function onSubmitClick(event){
     },
     error: function (data)
     {
-              $(".numberForm").text("Sorry, something wrong happened...");
-			  console.log("text was not sent");
+      $(".numberForm").text("Sorry, something wrong happened...");
+	  console.log("text was not sent");
     }
   }); 
 }
