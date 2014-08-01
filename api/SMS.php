@@ -49,9 +49,9 @@ function subscribeNumber($number, $message, $atTime){
 
 $Number = $_POST['number'];
 $Message = $_POST['Message'];
-$atTime = $_POST('atTime'];
+$atTime = $_POST['atTime'];
 
-subscribeNumber($Number, $Message, $atTimw);
+subscribeNumber($Number, $Message, $atTime);
 
 
 

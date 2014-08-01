@@ -127,7 +127,7 @@ function getSetTimes(){
 
 	console.log("Sunset in : " + countdown + " seconds");
 	console.log("Sunset: " + sunsetTime);
-}b
+}
 
 //Sets the flipclock's current time and whether it counts up or down
 function setFlipClock(time, countdown){
@@ -196,5 +196,5 @@ function onSendAgainClick(event){
 }
 
 function zeroCorrect(n){
-	return n > 9 ? "" + n; "0" + n;
+	return n > 9 ? '' + n: '0' + n;
 }
