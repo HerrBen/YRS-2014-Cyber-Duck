@@ -209,6 +209,7 @@
 }
 .climacon.sun:before {
 	content: "\e028";
+	font-size: 200px;
 }
 .climacon.sun.set:before,
 .climacon.sunset:before {
