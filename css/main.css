@@ -102,6 +102,7 @@ textarea {
 
 #container {
 /*	display : none; /* so the user sees nothing unless the location is provided in JS */
+	display : none; /*so the user sees nothing unless the location is provided in JS*/
 }
 
 
@@ -381,6 +382,7 @@ body {
     margin: 0 auto;
 }
 
+/* ************************** QUESTION MARK BUTTON ************************** */
 .btn-about {
     color: white;
     font-size: 24px;
@@ -401,7 +403,6 @@ body {
     text-align: center;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
-
 .btn-about .btn-close {
     display: none;
 }
@@ -414,7 +415,40 @@ body {
     display: block;
 }
 
-.overlay{
+/* ************************** QUESTION MARK BUTTON ************************** */
+/* ************************** SELECT TIMES BUTTON *************************** */
+.btn-times {
+    color: white;
+    font-size: 24px;
+    text-decoration: none;
+}
+.times {
+    display: none;
+    font-size: 1.2em;
+    background-color: #333;
+}
+.times > div {
+    padding: 20px 0 60px 0;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+.btn-times .btnTimes-close {
+    display: none;
+}
+
+.btn-times.close .btnTimes-open {
+    display: none;
+}
+
+.btn-times.close .btnTimes-close {
+    display: block;
+}
+
+/* ************************** SELECT TIMES BUTTON *************************** */
+
+.overlay {
     position: fixed;
     top: 0;
     left: 0;
@@ -685,7 +719,7 @@ body {
     .clock.flip-clock-wrapper {
         width: 100%;
         margin: 15px auto 5px auto;
-        max-width: 328px;
+        max-width: 316px;
         text-align: center;
         height: 100px;
     }
