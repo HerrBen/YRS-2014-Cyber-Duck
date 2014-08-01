@@ -31,11 +31,11 @@ $(document).ready(function() {
         $(this).toggleClass("close");
         $("#times").slideToggle("fast", function(){
             var ah = $("#times").height();
-            $("html, body").animate({scrollTop: wh + ah}, 500);
+            $("html, body").animate({scrollTop: wh + ah}, 20);
         });
     });	
 	$(".chosen-select").chosen().val(["60", "30", "15", "0"]);
-	$(".chosen-select").
+	// $(".chosen-select").
 });
 
 
