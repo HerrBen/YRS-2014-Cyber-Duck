@@ -105,7 +105,7 @@ function getSetTimes(){
 			$("#container p.untilSunsetLabel").html("until sunset...");	
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, true);
-			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes() + "pm today</p>");	//Set time text
+			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes()) + "pm today</p>");	//Set time text
 	}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 4)){	//Assuming any time below 4 hour is low
 			state ="low"
@@ -126,7 +126,7 @@ function getSetTimes(){
 
 	console.log("Sunset in : " + countdown + " seconds");
 	console.log("Sunset: " + sunsetTime);
-}
+}b
 
 //Sets the flipclock's current time and whether it counts up or down
 function setFlipClock(time, countdown){
@@ -135,7 +135,7 @@ function setFlipClock(time, countdown){
 }
 
 //If geolcating is rejected
-function errorFunction(){
+function errorFunction(){ g
     $("#container").html('"<div class="enableLocation centerClass">Oh no! It looks like you have location services disabled. Please enable them and try again.  </div>"'); //Displays message to user about geolocating
 	$("#container").show();
 }
@@ -180,6 +180,6 @@ function onSendAgainClick(event){
 	$(".numberForm").html(numberForm);
 }
 
-function zeroCorrect{
+function zeroCorrect(n){
 	return n > 9 ? "" + n; "0" + n;
 }
