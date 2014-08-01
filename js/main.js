@@ -25,6 +25,15 @@ $(document).ready(function() {
             $("html, body").animate({scrollTop: wh + ah}, 500);
         });
     });
+	$(".btn-times").on("click" ,function(e){ //About page button handler
+        var wh = $("body").height();
+        e.preventDefault();
+        $(this).toggleClass("close");
+        $("#times").slideToggle("fast", function(){
+            var ah = $("#times").height();
+            $("html, body").animate({scrollTop: wh + ah}, 500);
+        });
+    });	
 });
 
 
@@ -136,7 +145,7 @@ function setFlipClock(time, countdown){
 }
 
 //If geolcating is rejected
-function errorFunction(){ g
+function errorFunction(){ 
     $("#container").html('"<div class="enableLocation centerClass">Oh no! It looks like you have location services disabled. Please enable them and try again.  </div>"'); //Displays message to user about geolocating
 	$("#container").show();
 }
