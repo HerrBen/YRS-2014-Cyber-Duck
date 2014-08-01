@@ -446,7 +446,7 @@ body {
 }
 
 .btn-times.close .btnTimes-close {
-    display: block;
+    display: inline-block;
 }
 
 /* ************************** SELECT TIMES BUTTON *************************** */
