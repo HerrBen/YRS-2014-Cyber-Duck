@@ -101,7 +101,7 @@ textarea {
 
 
 #container {
-	display : none; /*so the user sees nothing unless the location is provided in JS*/
+	/*display : none;*/ /*so the user sees nothing unless the location is provided in JS*/
 }
 
 
@@ -448,6 +448,7 @@ body {
 /* ************************** SELECT TIMES BUTTON *************************** */
 
 .overlay {
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
@@ -459,6 +460,11 @@ body {
     margin: 0 auto;
     background-size: 300px;
     z-index: 100;
+}
+
+.warningImage {
+    height: 100px;
+    width: 100px;
 }
 
 /*Desktop*/
