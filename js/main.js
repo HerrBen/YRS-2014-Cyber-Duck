@@ -32,7 +32,6 @@ $(document).ready(function() {
         $("#times").slideToggle("fast", function(){
             var ah = $("#times").height();
             $("html, body").animate({scrollTop: wh + ah}, 500);
-            alert("hello");
         });
     });	
 });
