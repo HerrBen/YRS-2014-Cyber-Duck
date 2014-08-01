@@ -21,6 +21,7 @@ textarea {
 html {
     font-size: 1em;
     line-height: 1.4;
+
 }
 
 /*
@@ -205,13 +206,6 @@ textarea {
     *zoom: 1;
 }
 
-.icon {
-    width: 160px;
-    height: 160px;
-    margin: 0 auto;
-    background-size: 100%;
-}
-
 .flip-clock-label {
     display: none;
 }
@@ -278,6 +272,7 @@ body {
     font-size: 30px;
     height: 30px;
     vertical-align: center;
+    color: #D0D0D0;
 
     display: inline-block;
     margin-top: 0px;
@@ -285,13 +280,6 @@ body {
     margin-right: auto;
     height: 100%;
     text-shadow:2px 2px 8px rgba(0,0,0,0.6);
-}
-
-.location img {
-    display: inline-block;
-    margin: 0 7px 10px;
-    vertical-align: middle;
-    height: 100%;
 }
 
 .locationFieldContainer {
@@ -367,7 +355,7 @@ body {
 }
 
 .form {
-    padding-bottom: 60px;
+    padding-bottom: 20px;
 }
 
 .questionMark {
@@ -424,6 +412,17 @@ body {
 
 .btn-about.close .btn-close {
     display: block;
+}
+
+.overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:500px;
+    height:500px;
+    text-align: center;
+    vertical-align: middle;
+    background:url("../img/loading.gif") no-repeat;
 }
 
 /*Desktop*/
