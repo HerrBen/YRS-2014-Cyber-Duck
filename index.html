@@ -22,10 +22,11 @@
 		
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
-        <script src="js/plugins.js"></script>
-        <script src="js/chosen.jquery.min.js"></script>
-        <script src="js/flipclock.min.js"></script>
-        <script src="js/suncalc.js"></script>
+        <script src="js/vendor/plugins.js"></script>
+        <script src="js/vendor/chosen.jquery.min.js"></script>
+        <script src="js/vendor/PhoneFormat.js"></script>
+        <script src="js/vendor/flipclock.min.js"></script>
+        <script src="js/vendor/suncalc.js"></script>
 		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script> 
 
         <link rel="apple-touch-icon" sizes="57x57" href="img/apple-touch-icon-57x57.png">
@@ -66,7 +67,7 @@
 
                 <div class="location centerClass">
                     <p class="climacon compass compassIcon"></p>
-                    <p class="locationLabel centerClass">  London, United Kingdom</p>
+                    <p class="locationLabel centerClass">NO LOCATION AVAILABLE</p>
                 </div>
                 <div class="centerClass locationFieldContainer">
                     <input type="text" placeholder="Enter location..." class="locationField">
@@ -79,7 +80,6 @@
                             <span class="btnTimes-open"> &#x25B2; </span>
                             <span class="btnTimes-close"> &#x25BC; </span>
                             <input type="text" name="phoneNumber" placeholder="Phone Number" class="numberField centerClass" maxlength="20"><br>
-                            <img src="">
                         </a>
                             
                         <div class="times" id="times">
@@ -97,9 +97,6 @@
             </div>
         </div>
 
-
-		<script src="js/main.js"></script>
-
 		<a href="#about" class="btn-about">
             <span class="btn-open questionMark"> ? </span>
             <span class="btn-close questionMark">&times;</span>
@@ -112,7 +109,6 @@
                 <p>Before Dark was developed by Harjot Singh, Jake Sieradzki, Daniel Vaughan, Maya and Asha Wills for #YRS2014 Festival of Code.</p>
 					<br>
 				<p>With special thanks to all the team at Cyber-Duck and the Twilio team for their support.</p>
-                    <br>
                     <br>
                 <div class="Copyright">
                     <p class="copyrightLabel">&copy; Copyright Before Dark, 2014</p>
