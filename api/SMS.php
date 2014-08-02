@@ -24,7 +24,7 @@ function sendSMS($Number, $Message){
 
 
 //Inserts number into db for sending
-function subscribeNumber($number, $message, $atTime){
+function subscribeNumber($number, $message, $data){
 	//Send welcome SMS
 	if (sendSMS($number, "You've been signed up to receive sunset alerts from beforedark.co") == "Success"){
 	
@@ -37,21 +37,28 @@ function subscribeNumber($number, $message, $atTime){
 
 	$number = mysqli_real_escape_string($number);
 	$message = mysqli_real_escape_string($message);
-	$atTime = mysqli_real_escape_string($atTime);
 
+	  foreach($data as $atTime){
+    
 	$sql="INSERT INTO queue (number, message, atTime) VALUES ('$number', '$message', '$atTime')";
+	
 
 	mysqli_close($con);
 	echo "Success";
 	}
-	else echo "Failure";
+	}
+	else {
+	echo "Failure";
+	}
 }
 
 $Number = $_POST['number'];
-$Message = $_POST['Message'];
-$atTime = $_POST['atTime'];
 
-subscribeNumber($Number, $Message, $atTime);
+$message = $_POST['message'];
+
+$data = json_decode(stripslashes($_POST['data']));
+
+//subscribeNumber($Number, $message, $data);
 
 
 

@@ -93,6 +93,7 @@ function getLocation(lat, lng) {
 function getSetTimes(){
 	var currentTime = new Date();
 	var nextDay = new Date().setDate(currentTime.getDate() + 1);
+	var previousDay = new Date().setDate(currentTime.getDate() - 1);
 	var countdown;
     sunsetTime = SunCalc.getTimes(currentTime, latitude, longitude).sunset;	//calculate sunset time based on longitude and latitude
 	sunriseTime = SunCalc.getTimes(currentTime, latitude, longitude).sunrise;	//calculate sunrise time based on longitude and latitude
@@ -109,6 +110,15 @@ function getSetTimes(){
 			setFlipClock(countdown, false);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes()) + "pm tomorrow</p>");	//Set time text
 		}
+	else if ((currentTime.getTime() < sunriseTime.getTime()) && (currentTime.getTime() < sunsetTime.getTime())){//rogue state after 12:00am
+			sunsetTime = SunCalc.getTimes(previousDay, latitude, longitude).sunset;	//calculate YESTERDAY'S sunset time based on longitude and latitude
+			countdown = ((currentTime.getTime() - sunsetTime.getTime())/1000); //set countdown for flipclock and countdown
+			state = "roguenight";
+			$("span.climacon").replaceWith('<span class="climacon icon horizon sun moon"></span>');	//Set moon image
+			$("#container p.untilSunsetLabel").html("after sunset...");	//after sunset message
+			setFlipClock(countdown, false);
+			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes()) + "pm tomorrow</p>");	//Set time text
+	}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 1)){	//Assuming any time below 1 hour is lower
 			state ="lower"
 			$("span.climacon").replaceWith('<span class="climacon icon horizon sun lower"></span>');	//Set lower image
@@ -134,7 +144,7 @@ function getSetTimes(){
 			setFlipClock(countdown, true);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes()) + "pm today</p>");	//Set time text
 	}
-
+	console.log(state);
 	console.log("Sunset in : " + countdown + " seconds");
 	console.log("Sunset: " + sunsetTime);
 }
@@ -168,12 +178,21 @@ function onSubmitClick(event) {
 	var isNumberValid = isValidNumber(recipientNumber, countryCode);
 	event.preventDefault();
 
-	console.log(recipientNumber + " was valid: " + isNumberValid);
+	console.log(recipientNumber + " was valid: " + isNumberValid + countryCode);
 
 	if (isNumberValid == true) {
-		 
-		  message = "You've been signed up to receive sunset alerts from beforedark.co";
-		   var formData = {number: recipientNumber, Message: message, atTime: "2014/08/01 16:24:56"};
+	//$(".chosen-select").chosen().val('34')[0];
+	alert($(".chosen-select").chosen().val()[0]);
+			for (i = 0; i < $(".chosen-select").chosen().val().length; i++) { 
+		text += cars[i] + "<br>";
+}
+		
+			var JSONtimes = JSON.stringify($(".chosen-select").chosen().val());
+			
+			
+			var Message = JSON.stringify(["60 minutes before dark","30 minutes before dark","15 minutes before dark","Sunset has arrived, it is no longer 'before dark'"]);
+		   var formData = {number: recipientNumber, message: Message, data: JSONtimes};
+		   
 		   $(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
 		  $.ajax({
 		    url : "api/SMS.php",
