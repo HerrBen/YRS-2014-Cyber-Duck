@@ -182,10 +182,9 @@ function onSubmitClick(event) {
 
 	if (isNumberValid == true) {
 	//$(".chosen-select").chosen().val('34')[0];
-	alert($(".chosen-select").chosen().val()[0]);
-			for (i = 0; i < $(".chosen-select").chosen().val().length; i++) { 
-		text += cars[i] + "<br>";
-}
+	//TODO TURN 60 MINUTES BEFORE SUNSET INTO A TIME AND PASS THAT AS JSONTIMES.........
+	//alert($(".chosen-select").chosen().val()[0]);
+	
 		
 			var JSONtimes = JSON.stringify($(".chosen-select").chosen().val());
 			

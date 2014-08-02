@@ -58,7 +58,7 @@ $message = $_POST['message'];
 
 $data = json_decode(stripslashes($_POST['data']));
 
-//subscribeNumber($Number, $message, $data);
+subscribeNumber($Number, $message, $data);
 
 
 
