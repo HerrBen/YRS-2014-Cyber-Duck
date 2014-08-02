@@ -167,7 +167,7 @@ function processNumber(){
 	console.log("Hello :" + sunsetTime.sunset);
 }
 
-function changeToConfirmation(){
+function changeToConfirmation() {
 	$(".numberForm").html('<p class="untilSunsetLabel centerClass">Your message will be sent!</p><form action="" class="centerClass form"><input type="submit" value="Send another" class="submitBtn centerClass anotherButton">');
 	$(".submitBtn").click(onSendAgainClick);
 }
@@ -182,20 +182,18 @@ function onSubmitClick(event) {
 
 	console.log(recipientNumber + " was valid: " + isNumberValid + countryCode);
 
-	if (isNumberValid == true) {
+	// if (isNumberValid == true) {
 	//$(".chosen-select").chosen().val('34')[0];
 	//TODO TURN 60 MINUTES BEFORE SUNSET INTO A TIME AND PASS THAT AS JSONTIMES.........
 	//alert($(".chosen-select").chosen().val()[0]);
-	
 		
-			var JSONtimes = JSON.stringify($(".chosen-select").chosen().val());
+		var JSONtimes = JSON.stringify($(".chosen-select").chosen().val());
 			
-			
-			var Message = JSON.stringify(["60 minutes before dark","30 minutes before dark","15 minutes before dark","Sunset has arrived, it is no longer 'before dark'"]);
-		   var formData = {number: recipientNumber, message: Message, data: JSONtimes};
+		var Message = JSON.stringify(["60 minutes before dark","30 minutes before dark","15 minutes before dark","Sunset has arrived, it is no longer 'before dark'"]);
+		var formData = {number: recipientNumber, message: Message, data: JSONtimes};
 		   
-		   $(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
-		  $.ajax({
+		$(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
+		$.ajax({
 		    url : "api/SMS.php",
 		    type: "POST",
 		    data : formData,
@@ -203,18 +201,20 @@ function onSubmitClick(event) {
 		    {
 				console.log("Text Sent to " + recipientNumber);
 				console.log("Return: " + data);
-				$(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
+				$(".numberForm").fadeTo("slow", 3000, changeToConfirmation('success'));
 				
 		    },
 		    error: function (data)
 		    {
 		      $(".numberForm").text("Sorry, something wrong happened...");
 			  console.log("text was not sent");
+			  // $(".numberForm").fadeTo("slow", 3000, changeToConfirmation('error'));
 		    }
 		  }); 
-	} else {
-		console.log("Number was not valid.");
-	}
+	// } else {
+	// 	console.log("Number was not valid.");
+	// 	alert('Your number was valid, make sure you enter your country code with your number e.g. +44xxxx xxxxxx');
+	// }
 
   console.log($(".chosen-select").chosen().val());
 }
