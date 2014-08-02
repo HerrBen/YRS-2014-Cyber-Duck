@@ -20,7 +20,7 @@
 	From: Toronto, Canada
 
 	Mentor: Benjamin Maugain
-	Twitter: @HerrBe
+	Twitter: @HerrBen
 	From: France
 
 	Person who can use git from Unix terminal better than Daniel: Mark Garratt

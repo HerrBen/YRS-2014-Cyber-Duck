@@ -80,7 +80,7 @@ function getLocation(lat, lng) {
     if (status == google.maps.GeocoderStatus.OK) {
 		console.log(results)
 		if (results[1]) {
-			$(".location").html('<span class="climacon compass compassIcon" style="color:#D0D0D0"></span><span style="color:#D0D0D0" class="locationLabel centerClass">' + results[2].formatted_address + '</span>') //returns town and country and shoves it into correct place
+			$(".location").html('<span class="climacon compass compassIcon" style="color:#D0D0D0"></span><span style="color:#D0D0D0" class="locationLabel centerClass">' + results[4].formatted_address + '</span>') //returns town and country and shoves it into correct place
 		}
 		else {
           console.log("No results found");
