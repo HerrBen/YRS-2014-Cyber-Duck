@@ -16,6 +16,8 @@ var numberForm = $(".numberForm").html();
 $(document).ready(function() {
 	get_location(); 
 	$(".chosen-select").chosen();
+	$(".chosen-select").chosen().val(["60", "30", "15", "0"]);
+	$(".chosen-select").trigger("chosen:updated");
 	$(".btn-about").on("click" ,function(e){ //About page button handler
         var wh = $("body").height();
         e.preventDefault();
@@ -34,7 +36,7 @@ $(document).ready(function() {
             $("html, body").animate({scrollTop: wh + ah}, 500);
         });
     });	
-	$(".chosen-select").chosen().val(["60", "30", "15", "0"]);
+	
 });
 
 
@@ -78,7 +80,7 @@ function getLocation(lat, lng) {
     if (status == google.maps.GeocoderStatus.OK) {
 		console.log(results)
 		if (results[1]) {
-			$(".location").html('<span class="climacon compass compassIcon" style="color:#D0D0D0"></span><span style="color:#D0D0D0" class="locationLabel centerClass">' + results[4].formatted_address + '</span>') //returns town and country and shoves it into correct place
+			$(".location").html('<span class="climacon compass compassIcon" style="color:#D0D0D0"></span><span style="color:#D0D0D0" class="locationLabel centerClass">' + results[2].formatted_address + '</span>') //returns town and country and shoves it into correct place
 		}
 		else {
           console.log("No results found");
@@ -221,6 +223,9 @@ function onSubmitClick(event) {
 function onSendAgainClick(event){
 	event.preventDefault();
 	$(".numberForm").html(numberForm);
+	//TODO the chosen select doesnt work when reinjected?
+	$(".chosen-select").chosen();
+	$(".chosen-select").chosen().val(["60", "30", "15", "0"]);
 }
 
 function zeroCorrect(n){
