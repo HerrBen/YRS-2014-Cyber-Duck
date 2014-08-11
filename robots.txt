@@ -4,5 +4,7 @@ Disallow: /api/
 Disallow: /css/
 Disallow: /img/
 Disallow: .htaccess/
-Disallow: 404/
+Disallow: 404.html
 Disallow: browserconfig.xml
+Disallow: humans.txt
+Disallow: README.md
