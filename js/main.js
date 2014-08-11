@@ -183,13 +183,15 @@ function onSubmitClick(event) {
 	console.log(recipientNumber + " was valid: " + isNumberValid + countryCode);
 
 	// if (isNumberValid == true) {
-	//$(".chosen-select").chosen().val('34')[0];
+	var numberOptions = ($(".chosen-select").chosen().val().length);
+	for (var i= 0; i < numberOptions
+//	while
 	//TODO TURN 60 MINUTES BEFORE SUNSET INTO A TIME AND PASS THAT AS JSONTIMES.........
 	//alert($(".chosen-select").chosen().val()[0]);
 		
 		var JSONtimes = JSON.stringify($(".chosen-select").chosen().val());
 			
-		var Message = JSON.stringify(["60 minutes before dark","30 minutes before dark","15 minutes before dark","Sunset has arrived, it is no longer 'before dark'"]);
+		var Message = JSON.stringify(["There are 60 minutes before dark. (You have received this message because your phone number was entered at http://beforedark.co)","There are 30 minutes before dark. (You have received this message because your phone number was entered at http://beforedark.co)","There are 15 minutes before dark. (You have received this message because your phone number was entered at http://beforedark.co)","Sunset has arrived, it is no longer 'before dark'. (You have received this message because your phone number was entered at http://beforedark.co)"]);
 		var formData = {number: recipientNumber, message: Message, data: JSONtimes};
 		   
 		$(".numberForm").fadeTo("slow", 3000, changeToConfirmation());

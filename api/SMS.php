@@ -1,10 +1,10 @@
 <?php
 
 //Twilio connectors
+require('Twilio.php'); 
 
 function sendSMS($Number, $Message){
 	try{
-		require('Twilio.php'); 
 		$account_sid = 'AC0b0dad90111358a74ba2de77d0e41791'; 
 		$auth_token = '5a046d46f819d90c677be93037451f7d'; 
 		$client = new Services_Twilio($account_sid, $auth_token); 
@@ -36,9 +36,8 @@ function subscribeNumber($number, $message, $data){
 }
 
 	$number = mysqli_real_escape_string($number);
-	$message = mysqli_real_escape_string($message);
 
-	  foreach($data as $atTime){
+	 foreach($data as $atTime){
     
 	$sql="INSERT INTO queue (number, message, atTime) VALUES ('$number', '$message', '$atTime')";
 	
@@ -54,7 +53,7 @@ function subscribeNumber($number, $message, $data){
 
 $Number = $_POST['number'];
 
-$message = $_POST['message'];
+$message = json_decode(stripslashes($_POST['message']));
 
 $data = json_decode(stripslashes($_POST['data']));
 
