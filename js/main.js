@@ -1,23 +1,19 @@
 //Main javascript with all the fancy stuffs
-
 var sunsetTime;
 var sunriseTime;
 var latitude;
 var longitude;
 var clock = $(".clock").FlipClock({});
-var state; //Night, lower, low, day
+var state; //Night, roguenight, lower, low, day
 var geocoder = new google.maps.Geocoder();
 var latlng;
 var message;
-var numberForm = $(".numberForm").html();
+var numberForm;
 
 /*Event Hooks*/
 //Begin only when document is ready to be manipulated
 $(document).ready(function() {
 	get_location(); 
-	$(".chosen-select").chosen();
-	$(".chosen-select").chosen().val(["60", "30", "15", "0"]);
-	$(".chosen-select").trigger("chosen:updated");
 	$(".btn-about").on("click" ,function(e){ //About page button handler
         var wh = $("body").height();
         e.preventDefault();
@@ -27,18 +23,13 @@ $(document).ready(function() {
             $("html, body").animate({scrollTop: wh + ah}, 500);
         });
     });
-	$(".btn-times").on("click" ,function(e){ //About page button handler
-        var wh = $("body").height();
-        e.preventDefault();
-        $(this).toggleClass("close");
-        $("#times").slideToggle("fast", function(){
-            var ah = $("#times").height();
-            $("html, body").animate({scrollTop: wh + ah}, 500);
-        });
-    });	
-	
-});
+});	
 
+
+
+//When arrow clicked show chosen dropdown
+$(".btnTimes-open").click(onTimesClick);
+$(".btnTimes-close").click(onTimesClick);
 
 //When submit phone number button is pressed, post to SMS.php and transform into relevant message
 $(".submitBtn").click(onSubmitClick);
@@ -119,6 +110,7 @@ function getSetTimes(){
 			$("span.climacon").replaceWith('<span class="climacon icon horizon sun moon"></span>');	//Set moon image
 			$("#container p.untilSunsetLabel").html("after sunset...");	//after sunset message
 			setFlipClock(countdown, false);
+			sunsetTime = SunCalc.getTimes(currentTime, latitude, longitude).sunset;	//recalculate TODAY'S sunset time based on longitude and latitude
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes()) + "pm tomorrow</p>");	//Set time text
 	}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 1)){	//Assuming any time below 1 hour is lower
@@ -128,7 +120,7 @@ function getSetTimes(){
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set countdown for flipclock and countdown
 			setFlipClock(countdown, true);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes()) + "pm today</p>");	//Set time text
-
+			setChosenOptions(currentTime, sunsetTime);
 	}
 	else if (currentTime.getHours() > (sunsetTime.getHours() - 4)){	//Assuming any time below 4 hour is low
 			state ="low"
@@ -145,10 +137,32 @@ function getSetTimes(){
 			countdown = ((sunsetTime.getTime() - currentTime.getTime())/1000); //set time until sunset for flipclock and countdown
 			setFlipClock(countdown, true);
 			$(".sunsetLabel").html('<p class="sunsetLabel">The sun sets at '  + (sunsetTime.getHours() - 12) +":"+zeroCorrect(sunsetTime.getMinutes()) + "pm today</p>");	//Set time text
-	}
-	console.log(state);
-	console.log("Sunset in : " + countdown + " seconds");
+	}	
+	numberForm = $(".numberForm").html();
+	$(".chosen-select").chosen();
+	$(".chosen-select").chosen().val(["60", "30", "15", "0"]);
+	$(".chosen-select").trigger("chosen:updated");
+	console.log('State: ' + state);
+	console.log("Sunset in: " + countdown + " seconds");
 	console.log("Sunset: " + sunsetTime);
+}
+
+//Sets available options in chosen dropbox
+function setChosenOptions(currentTime, sunsetTime){
+	if (currentTime > addMinutes(sunsetTime, -60)){
+		$(".times").replaceWith('<div class="times" id="times"><select data-placeholder="Select times" name="times[]" multiple style="width: 350px" class="chosen-select"><option value="30">30 minutes</option><option value="15">15 minutes</option><option value="0">At sunset</option></select></div>');
+	}
+	else if (currentTime > addMinutes(sunsetTime, -30)){
+		$(".times").replaceWith('<div class="times" id="times"><select data-placeholder="Select times" name="times[]" multiple style="width: 350px" class="chosen-select"><option value="15">15 minutes</option><option value="0">At sunset</option></select></div>');
+	}
+	else if (currentTime > addMinutes(sunsetTime, -15)){
+		$(".times").replaceWith('<div class="times" id="times"><select data-placeholder="Select times" name="times[]" multiple style="width: 350px" class="chosen-select"><option value="0">At sunset</option></select></div>');
+	}
+}
+
+//Nifty function credits SO
+function addMinutes(date, minutes) {
+    return new Date(date.getTime() + minutes*60000);
 }
 
 //Sets the flipclock's current time and whether it counts up or down
@@ -163,73 +177,85 @@ function errorFunction(){
 	$("#container").show();
 }
 
-function processNumber(){
-	console.log("Hello :" + sunsetTime.sunset);
+//When the submit button is clicked
+function changeToConfirmation() {
+	$(".numberForm").html('<p class="untilSunsetLabel centerClass">You have been signed up for alerts!</p><form action="" class="centerClass form"><input type="submit" value="Send another" class="submitBtn centerClass anotherButton">');
+	$(".submitBtn").click(onSendAgainClick);
 }
 
-function changeToConfirmation() {
-	$(".numberForm").html('<p class="untilSunsetLabel centerClass">Your message will be sent!</p><form action="" class="centerClass form"><input type="submit" value="Send another" class="submitBtn centerClass anotherButton">');
-	$(".submitBtn").click(onSendAgainClick);
+//Generates message based on time
+function giveMessage(timeBefore){
+	if (timeBefore > 0){
+		return 'There are ' + timeBefore + ' minutes before dark.\n\n(You have received this message because your phone number was entered at http://beforedark.co)';
+	}
+	else{
+		return 'The sun has set and it is no longer before dark.\n\n(You have received this message because your phone number was entered at http://beforedark.co)';
+	}
 }
 
 //Event handler for submit button click
 function onSubmitClick(event) {
-	var recipientNumber = $(".numberField").val();
-
-	var countryCode = countryForE164Number(recipientNumber);
-	var isNumberValid = isValidNumber(recipientNumber, countryCode);
 	event.preventDefault();
+	if ($(".numberField").val().length > 7){
+		var recipientNumber = $(".numberField").val();
+		var currentTime = new Date();
+		var numberOptions = ($(".chosen-select").chosen().val().length);
+		var i;
+		var alerts = [];
+		var d = new Date();
 
-	console.log(recipientNumber + " was valid: " + isNumberValid + countryCode);
-
-	// if (isNumberValid == true) {
-	var numberOptions = ($(".chosen-select").chosen().val().length);
-	for (var i= 0; i < numberOptions
-//	while
-	//TODO TURN 60 MINUTES BEFORE SUNSET INTO A TIME AND PASS THAT AS JSONTIMES.........
-	//alert($(".chosen-select").chosen().val()[0]);
-		
-		var JSONtimes = JSON.stringify($(".chosen-select").chosen().val());
-			
-		var Message = JSON.stringify(["There are 60 minutes before dark. (You have received this message because your phone number was entered at http://beforedark.co)","There are 30 minutes before dark. (You have received this message because your phone number was entered at http://beforedark.co)","There are 15 minutes before dark. (You have received this message because your phone number was entered at http://beforedark.co)","Sunset has arrived, it is no longer 'before dark'. (You have received this message because your phone number was entered at http://beforedark.co)"]);
-		var formData = {number: recipientNumber, message: Message, data: JSONtimes};
-		   
-		$(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
-		$.ajax({
-		    url : "api/SMS.php",
-		    type: "POST",
-		    data : formData,
-		    success: function(data)
-		    {
-				console.log("Text Sent to " + recipientNumber);
-				console.log("Return: " + data);
-				$(".numberForm").fadeTo("slow", 3000, changeToConfirmation('success'));
-				
-		    },
-		    error: function (data)
-		    {
-		      $(".numberForm").text("Sorry, something wrong happened...");
-			  console.log("text was not sent");
-			  // $(".numberForm").fadeTo("slow", 3000, changeToConfirmation('error'));
-		    }
-		  }); 
-	// } else {
-	// 	console.log("Number was not valid.");
-	// 	alert('Your number was valid, make sure you enter your country code with your number e.g. +44xxxx xxxxxx');
-	// }
-
-  console.log($(".chosen-select").chosen().val());
+		for (i in $(".chosen-select").chosen().val()) {
+			alerts[alerts.length] = {Number: recipientNumber, Message : giveMessage($(".chosen-select").chosen().val()[i]), Time: new Date(sunsetTime.getTime() - $(".chosen-select").chosen().val()[i] * 60000), TimeOffset: d.getTimezoneOffset()};
+		}	
+			$(".numberForm").fadeTo("slow", 3000, changeToConfirmation());
+			$.ajax({
+				url : "api/SMS.php",
+				type: "POST",
+				data : {Alerts: JSON.stringify(alerts)},
+				success: function(data)
+				{
+					console.log("Text Sent to " + recipientNumber);
+					console.log("Return: " + data);
+					$(".numberForm").fadeTo("slow", 3000, changeToConfirmation('success'));		
+				},
+				error: function (data)
+				{
+				$(".numberForm").text("Sorry, something wrong happened...");
+				console.log("text was not sent");
+				// $(".numberForm").fadeTo("slow", 3000, changeToConfirmation('error'));
+				}
+			}); 
+	console.log($(".chosen-select").chosen().val());
+  }
+  else{
+	alert("Please enter a valid phone number!");
+  }
 }
 
 //change event handler for button to this
 function onSendAgainClick(event){
 	event.preventDefault();
 	$(".numberForm").html(numberForm);
-	//TODO the chosen select doesnt work when reinjected?
 	$(".chosen-select").chosen();
 	$(".chosen-select").chosen().val(["60", "30", "15", "0"]);
+	$(".chosen-select").trigger("chosen:updated");
+	$(".btnTimes-open").click(onTimesClick);
+	$(".btnTimes-close").click(onTimesClick);
+	$(".submitBtn").click(onSubmitClick);
+
 }
 
+//Quick fix for stopping removal of trailing 0
 function zeroCorrect(n){
 	return n > 9 ? '' + n: '0' + n;
+}
+
+function onTimesClick(event){ //times button handler
+	var wh = $("body").height();
+	event.preventDefault();
+	$(".btn-times").toggleClass("close");
+	$("#times").slideToggle("fast", function(){
+	var ah = $("#times").height();
+	$("html, body").animate({scrollTop: wh + ah}, 500);
+	});
 }
