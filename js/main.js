@@ -183,6 +183,12 @@ function changeToConfirmation() {
 	$(".submitBtn").click(onSendAgainClick);
 }
 
+//When the submit button is clicked
+function changeToFailure() {
+	$(".numberForm").html('<p class="untilSunsetLabel centerClass">Oops! Something went wrong :( Please try again later.</p><form action="" class="centerClass form"><input type="submit" value="Send another" class="submitBtn centerClass anotherButton">');
+	$(".submitBtn").click(onSendAgainClick);
+}
+
 //Generates message based on time
 function giveMessage(timeBefore){
 	if (timeBefore > 0){
@@ -215,14 +221,15 @@ function onSubmitClick(event) {
 				success: function(data)
 				{
 					console.log("Text Sent to " + recipientNumber);
-					console.log("Return: " + data);
+					console.log("Return data: " + data);
 					$(".numberForm").fadeTo("slow", 3000, changeToConfirmation('success'));		
 				},
 				error: function (data)
 				{
 				$(".numberForm").text("Sorry, something wrong happened...");
-				console.log("text was not sent");
-				// $(".numberForm").fadeTo("slow", 3000, changeToConfirmation('error'));
+				console.log("Text was not sent");
+				console.log("Return data: " + data);
+				 $(".numberForm").fadeTo("slow", 3000, changeToFailure('error'));
 				}
 			}); 
 	console.log($(".chosen-select").chosen().val());
