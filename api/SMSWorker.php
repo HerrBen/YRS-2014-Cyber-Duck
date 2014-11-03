@@ -12,7 +12,6 @@ class SMSWorker{
         else {
             // Default to live
             $this->con = mysql_connect("f17a43ff7e3cf78753106f4e21796abd55c1da62.rackspaceclouddb.com","beforedark987654","trEDra8wewrUm8pa");
-            $this->con = mysql_connect("127.0.0.1","root","password");
         }
 
 		mysql_select_db("before_dark", $this->con);
