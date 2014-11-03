@@ -1,16 +1,23 @@
 <?php
-require('Twilio.php'); 
+require('twilio.php');
 
 class SMSWorker{
 	var $con;
 	
 	//Constructor sets up SQL connection for worker
 	function __construct(){
-		$this->con = mysql_connect("f17a43ff7e3cf78753106f4e21796abd55c1da62.rackspaceclouddb.com","beforedark987654","trEDra8wewrUm8pa");
-//		$this->con = mysql_connect("127.0.0.1","root","");
-		mysql_select_db("beforedark", $this->con);
+		if (isset($_SERVER) && array_key_exists("HTTP_HOST", $_SERVER) && (strpos($_SERVER['HTTP_HOST'], "local") !== false)) {
+            $this->con = mysql_connect("localhost","root","");
+        }
+        else {
+            // Default to live
+            $this->con = mysql_connect("f17a43ff7e3cf78753106f4e21796abd55c1da62.rackspaceclouddb.com","beforedark987654","trEDra8wewrUm8pa");
+            $this->con = mysql_connect("127.0.0.1","root","password");
+        }
+
+		mysql_select_db("before_dark", $this->con);
 	}
-	
+
 	//Cleans up SQL connection
 	function __destruct(){
 		mysql_close();
@@ -36,7 +43,7 @@ class SMSWorker{
 			$sql="INSERT INTO queue (number, message, atTime) VALUES ('". $Alert->Number . "', '". $Alert->Message. "', '". $Alert->Time . "')";
 			echo $result = mysql_query($sql);
 		}
-	if ($result == '1111'){
+	if ($result){
 		$this->SendSMS($Alerts[0]->Number, "You've been signed up to receive sunset alerts from beforedark.co");
 	}
 }
